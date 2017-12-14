@@ -5,7 +5,6 @@ import {AppContainer} from 'react-hot-loader';
 import configureStore from './Store';
 
 if (typeof window !== 'undefined') {
-    console.log('*******************8');
     require('./static/style');
 }
 
@@ -15,9 +14,7 @@ export default () => {
     return (
         <AppContainer>
             <Provider store={store}>
-                <div className="main-wrapper">
-                    <CRouter/>
-                </div>
+                <CRouter store={store}/>
             </Provider>
         </AppContainer>
     )

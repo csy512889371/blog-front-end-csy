@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 import {Select, Menu, Row, Col, Icon, Button, Popover, AutoComplete, Input, Badge} from 'antd';
 
+
 const Option = Select.Option;
+
 
 function renderOption(item) {
     return (
@@ -35,15 +37,17 @@ function searchResult(query) {
         }));
 }
 
+export default class Header extends Component {
 
-export default class Header extends React.Component {
-
-    state = {
-        inputValue: '',
-        menuVisible: false,
-        menuMode: 'horizontal',
-        dataSource: [],
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            inputValue: '',
+            menuVisible: false,
+            menuMode: 'horizontal',
+            dataSource: [],
+        };
+    }
 
     handleSearch = (value) => {
         this.setState({
@@ -60,13 +64,18 @@ export default class Header extends React.Component {
         console.log(value);
     }
 
-
     render() {
-        const {inputValue, menuMode, menuVisible, dataSource} = this.state;
+        let pathname = this.props.location.pathname;
+        pathname = pathname.indexOf('/') === 0 ? pathname : '/' + pathname;
 
         let activeMenuItem = 'home';
+        if (pathname != '/') {
+            activeMenuItem = pathname;
+        }
 
-        let docVersions ={
+        const {inputValue, menuMode, dataSource} = this.state;
+
+        let docVersions = {
             '0.9.x': 'http://09x.ant.design',
             '0.10.x': 'http://010x.ant.design',
             '0.11.x': 'http://011x.ant.design',
@@ -74,7 +83,8 @@ export default class Header extends React.Component {
             '1.x': 'http://1x.ant.design',
         }
 
-        const versionOptions = Object.keys(docVersions).map(version => <Option value={docVersions[version]} key={version}>{version}</Option>);
+        const versionOptions = Object.keys(docVersions).map(version => <Option value={docVersions[version]}
+                                                                               key={version}>{version}</Option>);
 
         const menu = [
             <Button className="header-lang-button" ghost size="small" onClick={this.handleLangChange} key="lang">
@@ -97,8 +107,8 @@ export default class Header extends React.Component {
                         首页
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="docs/spec">
-                    <Link to='/'>
+                <Menu.Item key="/blog/intro">
+                    <Link to='/blog/intro'>
                         功能介绍
                     </Link>
                 </Menu.Item>
@@ -151,7 +161,7 @@ export default class Header extends React.Component {
                                 <Input
                                     suffix={(
                                         <Button className="search-btn" size="large" type="primary">
-                                            <Icon type="search" />
+                                            <Icon type="search"/>
                                         </Button>
                                     )}
                                 />

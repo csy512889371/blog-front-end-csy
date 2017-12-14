@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from './Banner';
-import Products from './Products'
+import Page1 from './Page1';
+import Page2 from './Page2';
 
 function getStyle() {
     return `
@@ -108,17 +109,16 @@ function getStyle() {
   `;
 }
 
- class Header extends React.Component {
+export default class Intro extends React.Component {
     render() {
         let props = this.props;
         return (
             <div className="main-wrapper">
                 <Banner {...props}/>
-                <Products/>
+                <Page1/>
+                <Page2/>
                 <style dangerouslySetInnerHTML={{__html: getStyle()}}/>
             </div>
         )
     }
 }
-
-export default Header

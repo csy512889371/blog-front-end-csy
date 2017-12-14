@@ -13,26 +13,23 @@ function typeFunc(a) {
     return 'left';
 }
 
-
-export default function Banner({location, onEnterChange}) {
+export default function Banner() {
 
     return (
         <section className="page banner-wrapper">
             <ScrollElement
                 className="page"
                 id="banner"
-                onChange={({mode}) => onEnterChange(mode)}
                 playScale={0.9}
             >
                 <QueueAnim className="banner-text-wrapper" type={typeFunc} delay={300} key="banner">
                     <h2 key="h2">Java <p>架构</p></h2>
-                    <p key="content">程序员的充电站: &nbsp;&nbsp;不积跬步无以至千里&nbsp;&nbsp;不积小流无以成江海。</p>
+                    <p key="content">程序员的充电站</p>
                     <span className="line" key="line"/>
                     <div key="button1" className="start-button clearfix">
-                        <Link to="\">
+                        <Link to="\blog\register">
                             注册
                         </Link>
-
                     </div>
                 </QueueAnim>
                 <Icon type="down" className="down"/>

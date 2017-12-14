@@ -1,14 +1,13 @@
 import React from 'react';
 import {Modal, Icon, message} from 'antd';
 import {Link} from 'react-router-dom';
-import ColorPicker from '../Color/ColorPicker';
+import ColorPicker from '../../Color/ColorPicker';
+import { loadScript } from '../../utils';
 
 class Footer extends React.Component {
     constructor(props) {
         super(props);
-
         this.lessLoaded = false;
-
         this.state = {
             color: '#108ee9',
         };
@@ -16,6 +15,28 @@ class Footer extends React.Component {
 
     handleColorChange = (color) => {
 
+        const changeColor = () => {
+            window.less.modifyVars({
+                '@primary-color': '#108ee9',
+            }).then(() => {
+                console.log('改变颜色成功');
+                this.setState({ color });
+            });
+        };
+
+        const lessUrl = 'https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js';
+
+        if (this.lessLoaded) {
+            changeColor();
+        } else {
+            window.less = {
+                async: true,
+            };
+            loadScript(lessUrl).then(() => {
+                this.lessLoaded = true;
+                changeColor();
+            });
+        }
     }
 
     render() {
