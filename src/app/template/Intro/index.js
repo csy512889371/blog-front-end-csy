@@ -122,6 +122,7 @@ export default class Intro extends React.Component {
                 <Page1/>
                 <Page2/>
                 <LoadMoreList/>
+
                 <style dangerouslySetInnerHTML={{__html: getStyle()}}/>
             </div>
         )

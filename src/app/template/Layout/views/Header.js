@@ -62,9 +62,12 @@ export default class Header extends Component {
         const {menuMode, dataSource} = this.state;
 
         const menu = [
-            <Button className="header-lang-button" ghost size="small" onClick={this.handleLangChange} key="lang">
-                登录
-            </Button>,
+            <Link to='/user/login'>
+                <Button className="header-lang-button" ghost size="small" key="lang">
+                    登录
+                </Button>
+            </Link>
+            ,
             <Menu mode={menuMode} selectedKeys={[activeMenuItem]} id="nav" key="nav">
                 <Menu.Item key="home">
                     <Link to='/'>
@@ -76,18 +79,18 @@ export default class Header extends Component {
                         功能介绍
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="docs/react">
-                    <Link to='/'>
+                <Menu.Item key="/blog/community">
+                    <Link to='/blog/community'>
                         社区
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="docs/pattern">
-                    <Link to='/'>
+                <Menu.Item key="/blog/blogger">
+                    <Link to='/blog/blogger'>
                         博客
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="docs/resource">
-                    <Link to='/'>
+                <Menu.Item key="/blog/resource">
+                    <Link to='/blog/resource'>
                         资源
                     </Link>
                 </Menu.Item>
