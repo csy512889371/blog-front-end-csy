@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 import {Select, Menu, Row, Col, Icon, Button, Popover, AutoComplete, Input, Badge} from 'antd';
 
+const Search = Input.Search;
 
 const Option = Select.Option;
 
@@ -49,21 +50,6 @@ export default class Header extends Component {
         };
     }
 
-    handleSearch = (value) => {
-        this.setState({
-            dataSource: value ? searchResult(value) : [],
-        });
-    }
-
-
-    handleSelectFilter = (value) => {
-
-    }
-
-    onSelect = (value) => {
-        console.log(value);
-    }
-
     render() {
         let pathname = this.props.location.pathname;
         pathname = pathname.indexOf('/') === 0 ? pathname : '/' + pathname;
@@ -73,34 +59,12 @@ export default class Header extends Component {
             activeMenuItem = pathname;
         }
 
-        const {inputValue, menuMode, dataSource} = this.state;
-
-        let docVersions = {
-            '0.9.x': 'http://09x.ant.design',
-            '0.10.x': 'http://010x.ant.design',
-            '0.11.x': 'http://011x.ant.design',
-            '0.12.x': 'http://012x.ant.design',
-            '1.x': 'http://1x.ant.design',
-        }
-
-        const versionOptions = Object.keys(docVersions).map(version => <Option value={docVersions[version]}
-                                                                               key={version}>{version}</Option>);
+        const {menuMode, dataSource} = this.state;
 
         const menu = [
             <Button className="header-lang-button" ghost size="small" onClick={this.handleLangChange} key="lang">
                 登录
             </Button>,
-            <Select
-                key="version"
-                className="version"
-                size="small"
-                dropdownMatchSelectWidth={false}
-                defaultValue=""
-                onChange={this.handleVersionChange}
-                getPopupContainer={trigger => trigger.parentNode}
-            >
-                {versionOptions}
-            </Select>,
             <Menu mode={menuMode} selectedKeys={[activeMenuItem]} id="nav" key="nav">
                 <Menu.Item key="home">
                     <Link to='/'>
@@ -127,15 +91,14 @@ export default class Header extends Component {
                         资源
                     </Link>
                 </Menu.Item>
+
             </Menu>
         ];
 
         const headerClassName = classNames({
-            clearfix: true,
             'home-nav-white': false
         });
 
-        const searchPlaceholder = '搜索文章...';
         return (
             <header id="header" className={headerClassName}>
                 <Row>
@@ -147,25 +110,12 @@ export default class Header extends Component {
                     </Col>
                     <Col lg={20} md={19} sm={0} xs={0}>
                         <div id="search-box">
-                            <AutoComplete
-                                dataSource={dataSource.map(renderOption)}
-                                value={inputValue}
-                                dropdownClassName="component-select"
-                                placeholder={searchPlaceholder}
-                                optionLabelProp="data-label"
-                                filterOption={this.handleSelectFilter}
-                                onSelect={this.onSelect}
-                                onSearch={this.handleSearch}
-                                getPopupContainer={trigger => trigger.parentNode}
-                            >
-                                <Input
-                                    suffix={(
-                                        <Button className="search-btn" size="large" type="primary">
-                                            <Icon type="search"/>
-                                        </Button>
-                                    )}
-                                />
-                            </AutoComplete>
+                            <Search
+                                placeholder="搜索文章..."
+                                onSearch={value => console.log(value)}
+                                enterButton
+                                style={{ width: 300 }}
+                            />
                         </div>
                         {menuMode === 'horizontal' ? menu : null}
                     </Col>

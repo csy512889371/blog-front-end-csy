@@ -26,6 +26,7 @@ function getStyle() {
       transition: border .5s cubic-bezier(0.455, 0.03, 0.515, 0.955), background .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     }
     #header .header-lang-button {
+      margin-top: 28px;
       color: #fff;
       border-color: #fff;
     }

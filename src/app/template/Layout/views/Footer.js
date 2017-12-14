@@ -51,6 +51,7 @@ class Footer extends React.Component {
                             </a>
                         </div>
 
+
                         <div style={{marginTop: 12}}>
                             <ColorPicker
                                 type="sketch"
@@ -70,6 +71,8 @@ class Footer extends React.Component {
                                 onChangeComplete={this.handleColorChange}
                             />
                         </div>
+
+
                     </li>
                     <li>
                         <h2><Icon type="link"/> 资源链接</h2>
@@ -107,6 +110,8 @@ class Footer extends React.Component {
                         </div>
                     </li>
                 </ul>
+
+
             </footer>
         );
     }

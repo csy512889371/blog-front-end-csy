@@ -2,6 +2,9 @@ import React from 'react';
 import Banner from './Banner';
 import Page1 from './Page1';
 import Page2 from './Page2';
+import LoadMoreList from './EventList';
+
+import './index.less';
 
 function getStyle() {
     return `
@@ -27,6 +30,7 @@ function getStyle() {
       transition: border .5s cubic-bezier(0.455, 0.03, 0.515, 0.955), background .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     }
     #header .header-lang-button {
+      margin-top: 28px;
       color: #fff;
       border-color: #fff;
     }
@@ -117,6 +121,7 @@ export default class Intro extends React.Component {
                 <Banner {...props}/>
                 <Page1/>
                 <Page2/>
+                <LoadMoreList/>
                 <style dangerouslySetInnerHTML={{__html: getStyle()}}/>
             </div>
         )

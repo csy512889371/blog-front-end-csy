@@ -5,13 +5,9 @@ import createHistory from 'history/createBrowserHistory';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 
-import Perf from 'react-addons-perf';
 const logger = createLogger();
 const history = createHistory();
 const rMiddleware = routerMiddleware(history);
-
-const win = window;
-win.Perf = Perf;
 
 export const sagaMiddleware = createSagaMiddleware();
 
@@ -21,8 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const storeEnhancers = compose(
-    applyMiddleware(...middlewares, logger),
-    (win && win.devToolsExtension) ? win.devToolsExtension() : (f) => f,
+    applyMiddleware(...middlewares, logger)
 );
 
 export default function configureStore() {
