@@ -107,7 +107,7 @@ export default class Header extends Component {
                 <Row>
                     <Col lg={4} md={5} sm={24} xs={24}>
                         <Link to="/" id="logo">
-                            <img alt="logo" src="assets/images/blogLogo/logo.png"/>
+                            <img alt="logo" src="http://img.my.csdn.net/uploads/201712/14/1513259107_8910.png"/>
                             <span>Nick Architect</span>
                         </Link>
                     </Col>

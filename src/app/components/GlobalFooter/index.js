@@ -1,12 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './index.less';
+import styles from './index.module.less';
 
 export default ({ className, links, copyright }) => {
   const clsString = classNames(styles.globalFooter, className);
-  console.log('8787878787878787878877');
-  console.log(clsString);
-
   return (
     <div className={clsString}>
       {

@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Row, Col, Card, Steps} from 'antd';
 
+import styles from './index.module.less';
 
 const { Step } = Steps;
 export default class Page2 extends React.Component {
@@ -37,7 +38,7 @@ export default class Page2 extends React.Component {
 
         return (
             <div >
-                <div className="div-row">
+                <div className={styles.divRow}>
                     <Row gutter={16} type="flex" justify="center">
                         <Col className="gutter-row" md={18}>
                             <Card title="成长路线" style={{marginBottom: 24}} bordered={false}>
@@ -54,10 +55,10 @@ export default class Page2 extends React.Component {
                     </Row>
                 </div>
 
-                <div className="end-div">
+                <div className={styles.endDiv}>
                     <Row gutter={16} type="flex" justify="center">
                         <Col span={8}>
-                            <Card title="申明" bordered={false} className="notify-div">
+                            <Card title="申明" bordered={false} className={styles.notifyDiv}>
                                 <div >
                                     <h3>本站资源全部来自与互联网，如果发现本站有侵权行为，请告知，我们会在第一时间处理</h3>
                                 </div>

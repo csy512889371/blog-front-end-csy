@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-
+import { Link } from 'dva/router';
 import {Form, Input, Tabs, Button, Icon, Checkbox, Row, Col, Alert} from 'antd';
-import './index.less';
+import styles from './index.module.less';
 
 const FormItem = Form.Item;
 const {TabPane} = Tabs;
@@ -13,17 +13,19 @@ class Login extends React.Component {
         type: 'account',
     };
 
+    handleSubmit = (e) => {
+
+    }
+
     render() {
         const {form, login} = this.props;
         const {getFieldDecorator} = form;
         const {count, type} = this.state;
 
-
         return (
-
-            <div className="main">
+            <div className={styles.main}>
                 <Form onSubmit={this.handleSubmit}>
-                    <Tabs animated={false} className="main" activeKey={type} onChange={this.onSwitch}>
+                    <Tabs animated={false} className={styles.tabs} activeKey={type} onChange={this.onSwitch}>
                         <TabPane tab="账户密码登录" key="account">
                             <FormItem>
                                 {getFieldDecorator('userName', {
@@ -33,7 +35,7 @@ class Login extends React.Component {
                                 })(
                                     <Input
                                         size="large"
-                                        prefix={<Icon type="user" className="prefixIcon"/>}
+                                        prefix={<Icon type="user" className={styles.prefixIcon} />}
                                         placeholder="admin"
                                     />
                                 )}
@@ -46,7 +48,7 @@ class Login extends React.Component {
                                 })(
                                     <Input
                                         size="large"
-                                        prefix={<Icon type="lock" className="prefixIcon"/>}
+                                        prefix={<Icon type="lock" className={styles.prefixIcon} />}
                                         type="password"
                                         placeholder="888888"
                                     />
@@ -54,7 +56,6 @@ class Login extends React.Component {
                             </FormItem>
                         </TabPane>
                         <TabPane tab="手机号登录" key="mobile">
-
                             <FormItem>
                                 {getFieldDecorator('mobile', {
                                     rules: [{
@@ -65,7 +66,7 @@ class Login extends React.Component {
                                 })(
                                     <Input
                                         size="large"
-                                        prefix={<Icon type="mobile" className="prefixIcon"/>}
+                                        prefix={<Icon type="mobile" className={styles.prefixIcon} />}
                                         placeholder="手机号"
                                     />
                                 )}
@@ -80,7 +81,7 @@ class Login extends React.Component {
                                         })(
                                             <Input
                                                 size="large"
-                                                prefix={<Icon type="mail" className="prefixIcon"/>}
+                                                prefix={<Icon type="mail" className={styles.prefixIcon} />}
                                                 placeholder="验证码"
                                             />
                                         )}
@@ -88,7 +89,7 @@ class Login extends React.Component {
                                     <Col span={8}>
                                         <Button
                                             disabled={count}
-                                            className="getCaptcha"
+                                            className={styles.getCaptcha}
                                             size="large"
                                             onClick={this.onGetCaptcha}
                                         >
@@ -99,21 +100,27 @@ class Login extends React.Component {
                             </FormItem>
                         </TabPane>
                     </Tabs>
-
-                    <FormItem className="additional">
+                    <FormItem className={styles.additional}>
                         {getFieldDecorator('remember', {
                             valuePropName: 'checked',
                             initialValue: true,
                         })(
-                            <Checkbox className="autoLogin">自动登录</Checkbox>
+                            <Checkbox className={styles.autoLogin}>自动登录</Checkbox>
                         )}
-                        <a className="forgot" href="">忘记密码</a>
-                        <Button size="large" className="submit" type="primary" htmlType="submit">
+                        <a className={styles.forgot} href="">忘记密码</a>
+                        <Button size="large" className={styles.submit} type="primary" htmlType="submit">
                             登录
                         </Button>
                     </FormItem>
-
                 </Form>
+                <div className={styles.other}>
+                    其他登录方式
+                    {/* 需要加到 Icon 中 */}
+                    <span className={styles.iconAlipay} />
+                    <span className={styles.iconTaobao} />
+                    <span className={styles.iconWeibo} />
+                    <Link className={styles.register} to="/user/register">注册账户</Link>
+                </div>
             </div>
 
         )

@@ -4,8 +4,6 @@ import DocumentTitle from 'react-document-title';
 import {Icon} from 'antd';
 import GlobalFooter from '../components/GlobalFooter';
 import './UserLayout.less';
-import logo from '../assets/logo.png';
-import styles from './tes.css';
 
 const links = [{
     title: '帮助',
@@ -32,10 +30,10 @@ class UserLayout extends React.PureComponent {
         return (
             <DocumentTitle title={this.getPageTitle()}>
                 <div className="container">
-                    <div className={styles.top}>
+                    <div className="top">
                         <div className="header">
                             <Link to="/">
-                                <img alt="logo" className="logo" src={logo}/>
+                                <img alt="logo" className="logo" src="http://img.my.csdn.net/uploads/201712/14/1513259107_8910.png"/>
                                 <span className="title">JAVA ARCHITECT</span>
                             </Link>
                         </div>

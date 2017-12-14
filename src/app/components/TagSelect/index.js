@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import { Tag, Icon } from 'antd';
 
-import styles from './index.less';
+import styles from './index.module.less';
 
 const { CheckableTag } = Tag;
 

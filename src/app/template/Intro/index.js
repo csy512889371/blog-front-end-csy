@@ -4,7 +4,6 @@ import Page1 from './Page1';
 import Page2 from './Page2';
 import LoadMoreList from './EventList';
 
-import './index.less';
 
 function getStyle() {
     return `

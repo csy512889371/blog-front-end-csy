@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './index.less';
+import styles from './index.module.less';
 
 export default ({ title, children, last, block, grid, ...rest }) => {
   const cls = classNames(styles.standardFormRow, {

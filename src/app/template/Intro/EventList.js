@@ -1,5 +1,6 @@
 import React from 'react';
 import {Row, Col, List, Avatar, Card} from 'antd';
+import styles from './index.module.less';
 
 export default class EventList extends React.Component {
     state = {
@@ -25,10 +26,10 @@ export default class EventList extends React.Component {
         }];
 
         return (
-            <div className="event-list">
+            <div className={styles.eventList}>
                 <Row gutter={16} type="flex" justify="center">
                     <Col className="gutter-row" md={8}>
-                        <Card className="list-dav" title="大事件" style={{marginBottom: 24}} bordered={false}>
+                        <Card className={styles.listDav} title="大事件" style={{marginBottom: 24}} bordered={false}>
                             <List
                                 loading={loading}
                                 itemLayout="horizontal"

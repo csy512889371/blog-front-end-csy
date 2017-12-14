@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {Form, Row, Col, Card, Button} from 'antd';
-import './productItem.less';
+import styles from './index.module.less';
 import StandardFormRow from '../../components/StandardFormRow'
 import TagSelect from '../../components/TagSelect'
 
 const FormItem = Form.Item;
-
 
 class Products extends Component {
 
@@ -41,13 +40,13 @@ class Products extends Component {
 
                 <Row gutter={16} type="flex" justify="center">
                     <Col className="gutter-row" md={6}>
-                        <div className="gutter-box">
+                        <div className={styles.gutterBox}>
                             <Card style={{width: 320}} bodyStyle={{padding: 0}}>
-                                <div className="custom-image">
+                                <div className={styles.customImage}>
                                     <img alt="example" width="100%"
                                          src="http://img.my.csdn.net/uploads/201712/13/1513162976_6377.jpg"/>
                                 </div>
-                                <div className="custom-card">
+                                <div className={styles.customCard}>
                                     <h1>kafka</h1>
                                     <h6>5 收录资源 | 88关注</h6>
                                     <p>
@@ -57,13 +56,13 @@ class Products extends Component {
                         </div>
                     </Col>
                     <Col className="gutter-row" md={6}>
-                        <div className="gutter-box">
+                        <div className={styles.gutterBox}>
                             <Card style={{width: 320}} bodyStyle={{padding: 0}}>
-                                <div className="custom-image">
+                                <div className={styles.customImage}>
                                     <img alt="example" width="100%"
                                          src="http://img.my.csdn.net/uploads/201712/13/1513163063_7832.png"/>
                                 </div>
-                                <div className="custom-card">
+                                <div className={styles.customCard}>
                                     <h1>spark</h1>
                                     <h6>5 收录资源 | 88关注</h6>
                                     <p>Spark是类Hadoop MapReduce的通用并行框架，拥有Hadoop
@@ -73,13 +72,13 @@ class Products extends Component {
                         </div>
                     </Col>
                     <Col className="gutter-row" md={6}>
-                        <div className="gutter-box">
+                        <div className={styles.gutterBox}>
                             <Card style={{width: 320}} bodyStyle={{padding: 0}}>
-                                <div className="custom-image">
+                                <div className={styles.customImage}>
                                     <img alt="example" width="100%"
                                          src="http://img.my.csdn.net/uploads/201712/13/1513162858_9335.jpg"/>
                                 </div>
-                                <div className="custom-card">
+                                <div className={styles.customCard}>
                                     <h1>Node</h1>
                                     <h6>5 收录资源 | 88关注</h6>
                                     <p>Node.js是一个基于Chrome JavaScript运行时建立的平台，使用事件驱动、非阻塞I/O
@@ -92,13 +91,13 @@ class Products extends Component {
 
                 <Row gutter={16} type="flex" justify="center">
                     <Col className="gutter-row" md={6}>
-                        <div className="gutter-box">
+                        <div className={styles.gutterBox}>
                             <Card style={{width: 320}} bodyStyle={{padding: 0}}>
-                                <div className="custom-image">
+                                <div className={styles.customImage}>
                                     <img alt="example" width="100%"
                                          src="http://img.my.csdn.net/uploads/201712/13/1513162895_9083.png"/>
                                 </div>
-                                <div className="custom-card">
+                                <div className={styles.customCard}>
                                     <h1>React Native</h1>
                                     <h6>5 收录资源 | 88关注</h6>
                                     <p>React
@@ -109,13 +108,13 @@ class Products extends Component {
                         </div>
                     </Col>
                     <Col className="gutter-row" md={6}>
-                        <div className="gutter-box">
+                        <div className={styles.gutterBox}>
                             <Card style={{width: 320}} bodyStyle={{padding: 0}}>
-                                <div className="custom-image">
+                                <div className={styles.customImage}>
                                     <img alt="example" width="100%"
                                          src="http://img.my.csdn.net/uploads/201712/13/1513162877_3390.jpg"/>
                                 </div>
-                                <div className="custom-card">
+                                <div className={styles.customCard}>
                                     <h1>React</h1>
                                     <h6>5 收录资源 | 88关注</h6>
                                     <p>React是Facebook用来创建用户界面的JavaScript库，用于构建“可预期的”和“声明式的”Web用户界面。
@@ -125,13 +124,13 @@ class Products extends Component {
                         </div>
                     </Col>
                     <Col className="gutter-row" md={6}>
-                        <div className="gutter-box">
+                        <div className={styles.gutterBox}>
                             <Card style={{width: 320}} bodyStyle={{padding: 0}}>
-                                <div className="custom-image">
+                                <div className={styles.customImage}>
                                     <img alt="example" width="100%"
                                          src="http://img.my.csdn.net/uploads/201712/13/1513163096_9160.png"/>
                                 </div>
-                                <div className="custom-card">
+                                <div className={styles.customCard}>
                                     <h1>webpack</h1>
                                     <h6>5 收录资源 | 88关注</h6>
                                     <p>webpack以CommonJS规范在本地对js进行模块化处理打包;
@@ -145,13 +144,13 @@ class Products extends Component {
 
                 <Row gutter={16} type="flex" justify="center">
                     <Col className="gutter-row" md={6}>
-                        <div className="gutter-box">
+                        <div className={styles.gutterBox}>
                             <Card style={{width: 320}} bodyStyle={{padding: 0}}>
-                                <div className="custom-image">
+                                <div className={styles.customImage}>
                                     <img alt="example" width="100%"
                                          src="http://img.my.csdn.net/uploads/201712/13/1513162976_6377.jpg"/>
                                 </div>
-                                <div className="custom-card">
+                                <div className={styles.customCard}>
                                     <h1>kafka</h1>
                                     <h6>5 收录资源 | 88关注</h6>
                                     <p>
@@ -161,13 +160,13 @@ class Products extends Component {
                         </div>
                     </Col>
                     <Col className="gutter-row" md={6}>
-                        <div className="gutter-box">
+                        <div className={styles.gutterBox}>
                             <Card style={{width: 320}} bodyStyle={{padding: 0}}>
-                                <div className="custom-image">
+                                <div className={styles.customImage}>
                                     <img alt="example" width="100%"
                                          src="http://img.my.csdn.net/uploads/201712/13/1513163063_7832.png"/>
                                 </div>
-                                <div className="custom-card">
+                                <div className={styles.customCard}>
                                     <h1>spark</h1>
                                     <h6>5 收录资源 | 88关注</h6>
                                     <p>Spark是类Hadoop MapReduce的通用并行框架，拥有Hadoop
@@ -177,13 +176,13 @@ class Products extends Component {
                         </div>
                     </Col>
                     <Col className="gutter-row" md={6}>
-                        <div className="gutter-box">
+                        <div className={styles.gutterBox}>
                             <Card style={{width: 320}} bodyStyle={{padding: 0}}>
-                                <div className="custom-image">
+                                <div className={styles.customImage}>
                                     <img alt="example" width="100%"
                                          src="http://img.my.csdn.net/uploads/201712/13/1513162858_9335.jpg"/>
                                 </div>
-                                <div className="custom-card">
+                                <div className={styles.customCard}>
                                     <h1>Node</h1>
                                     <h6>5 收录资源 | 88关注</h6>
                                     <p>Node.js是一个基于Chrome JavaScript运行时建立的平台，使用事件驱动、非阻塞I/O
