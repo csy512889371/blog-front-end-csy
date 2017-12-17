@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import classNames from 'classnames';
-import {Link} from 'react-router-dom';
+import {Link} from 'dva/router';
 import {Select, Menu, Row, Col, Icon, Button, Popover, AutoComplete, Input, Badge} from 'antd';
 
 const Search = Input.Search;
@@ -50,6 +50,7 @@ export default class Header extends Component {
         };
     }
 
+
     render() {
         let pathname = this.props.location.pathname;
         pathname = pathname.indexOf('/') === 0 ? pathname : '/' + pathname;
@@ -62,7 +63,7 @@ export default class Header extends Component {
         const {menuMode, dataSource} = this.state;
 
         const menu = [
-            <Link to='/user/login'>
+            <Link to='/user/login' key="/user/login">
                 <Button className="header-lang-button" ghost size="small" key="lang">
                     登录
                 </Button>
@@ -108,7 +109,7 @@ export default class Header extends Component {
                     <Col lg={4} md={5} sm={24} xs={24}>
                         <Link to="/" id="logo">
                             <img alt="logo" src="http://img.my.csdn.net/uploads/201712/14/1513259107_8910.png"/>
-                            <span>Nick Architect</span>
+                            <span>Eva Architect</span>
                         </Link>
                     </Col>
                     <Col lg={20} md={19} sm={0} xs={0}>
@@ -117,7 +118,7 @@ export default class Header extends Component {
                                 placeholder="搜索文章..."
                                 onSearch={value => console.log(value)}
                                 enterButton
-                                style={{ width: 300 }}
+                                style={{width: 300}}
                             />
                         </div>
                         {menuMode === 'horizontal' ? menu : null}

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Modal, Icon, message} from 'antd';
-import {Link} from 'react-router-dom';
+import {Link} from 'dva/router';
 import ColorPicker from '../../Color/ColorPicker';
-import { loadScript } from '../../utils';
+import {loadScript} from '../../utils';
 
 class Footer extends React.Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class Footer extends React.Component {
                 '@primary-color': '#108ee9',
             }).then(() => {
                 console.log('改变颜色成功');
-                this.setState({ color });
+                this.setState({color});
             });
         };
 
@@ -44,11 +44,14 @@ class Footer extends React.Component {
             <footer id="footer">
                 <ul>
                     <li>
-                        <h2><Icon type="link"/> nick Architect</h2>
+                        <h2><Icon type="link"/> Eva Architect</h2>
                         <div>
-                            <a target="_blank " href="www.mqyjq.com">
-                                Home
-                            </a>
+                            <Link to="/">
+
+                                <a target="_blank " href="www.mqyjq.com">
+                                    Home
+                                </a>
+                            </Link>
                         </div>
 
 
@@ -95,7 +98,7 @@ class Footer extends React.Component {
                     <li>
                         <h2><Icon type="customer-service"/> 联系方式</h2>
                         <div>
-                            QQ群号：345714893
+                            QQ群号(架构师成长之路)：688324454
                         </div>
 
                     </li>
@@ -106,7 +109,7 @@ class Footer extends React.Component {
                             &nbsp;
                         </div>
                         <div>
-                            Built with&nbsp; nick
+                            Built with&nbsp; eva
                         </div>
                     </li>
                 </ul>

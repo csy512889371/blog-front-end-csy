@@ -24,7 +24,7 @@ export default function Banner() {
             >
                 <QueueAnim className="banner-text-wrapper" type={typeFunc} delay={300} key="banner">
                     <h2 key="h2">Java <p>架构</p></h2>
-                    <p key="content">程序员的充电站</p>
+                    <p key="content">架构师成长之路 （QQ群）688324454</p>
                     <span className="line" key="line"/>
                     <div key="button1" className="start-button clearfix">
                         <Link to="\blog\register">
