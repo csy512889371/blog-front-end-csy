@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link} from 'dva/router';
 import {Row, Col, Card, Steps} from 'antd';
 
 import styles from './index.module.less';

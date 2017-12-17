@@ -1,6 +1,6 @@
 import React from 'react';
 import TweenOne from 'rc-tween-one';
-import {Link} from 'react-router-dom';
+import {Link} from 'dva/router';
 
 export default function Page1() {
     return (

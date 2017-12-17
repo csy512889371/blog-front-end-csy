@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route} from 'dva/router';
 import {ConnectedRouter} from 'react-router-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
 
@@ -10,9 +10,10 @@ import Intro from '../template/Intro';
 import NotFound from './Exception/500';
 import Login from '../template/Login';
 
-import Articles from '../template/Articles';
+import Articles from '../template/Articles/Info/index';
 import Topics from '../template/Topics';
 import Register from '../template/Register';
+import Community from '../template/Community';
 
 const history = createBrowserHistory();
 
@@ -74,6 +75,14 @@ const RegisterPage = (props) => {
     );
 };
 
+const CommunityPage = (props) => {
+    return (
+        <Layout12 {...props}>
+            <Community {...props}/>
+        </Layout12>
+    );
+};
+
 export default class CRouter extends Component {
     render() {
         return (
@@ -81,7 +90,7 @@ export default class CRouter extends Component {
                 <Switch>
                     <Route exact strict path="/" component={HomePage}/>
                     <Route path="/blog/intro" component={IntroPage}/>
-                    <Route path="/blog/community" component={NotFoundPage} />
+                    <Route path="/blog/community" component={CommunityPage} />
                     <Route path="/blog/blogger" component={NotFoundPage} />
                     <Route path="/blog/resource" component={NotFoundPage} />
 
@@ -89,7 +98,7 @@ export default class CRouter extends Component {
                     <Route path="/user/register" component={RegisterPage} />
 
                     <Route path="/articles/doc/:id" component={ArticlesPage} />
-                    <Route path="/topics/:id" component={ArticlesPage} />
+                    <Route path="/topics/:id" component={TopicsPage} />
                 </Switch>
             </ConnectedRouter>
         )

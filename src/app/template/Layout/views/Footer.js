@@ -47,10 +47,7 @@ class Footer extends React.Component {
                         <h2><Icon type="link"/> Eva Architect</h2>
                         <div>
                             <Link to="/">
-
-                                <a target="_blank " href="www.mqyjq.com">
-                                    Home
-                                </a>
+                                Home
                             </Link>
                         </div>
 

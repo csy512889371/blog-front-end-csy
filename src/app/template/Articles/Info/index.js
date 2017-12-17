@@ -2,10 +2,11 @@ import React from 'react';
 import remark from 'remark'
 import reactRenderer from 'remark-react'
 import styles from './index.module.less';
-import {getStyle} from '../../utils';
+import globalStyles from '../../global.module.less';
+import {getStyle} from '../../../utils/index';
 import {getContenInfo} from './contentInfo';
 import {Button, Row, Col, List, Avatar, Card} from 'antd';
-import {Link} from 'react-router-dom';
+import {Link} from 'dva/router';
 
 class Articles extends React.Component {
 
@@ -23,7 +24,7 @@ class Articles extends React.Component {
 
         return (
             <div>
-                <section className={styles.bannerWrapper}/>
+                <section className={globalStyles.bannerHeaderWrapper}/>
                 <div>
                     <Row gutter={16} type="flex" justify="center">
                         <Col className="gutter-row" md={10}>

@@ -2,7 +2,7 @@ import React from 'react';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import QueueAnim from 'rc-queue-anim';
 import {Icon} from 'antd';
-import {Link} from 'react-router-dom';
+import {Link} from 'dva/router';
 
 function typeFunc(a) {
     if (a.key === 'line') {
