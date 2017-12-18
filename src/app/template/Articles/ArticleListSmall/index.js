@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import moment from 'moment';
 import styles from './index.module.less'
 import {Spin, Button, Card, List, Avatar, Icon, Divider, Badge} from 'antd';
-
+import {Link} from 'dva/router';
 
 class ArticleListHome extends Component {
 
@@ -22,10 +22,12 @@ class ArticleListHome extends Component {
     }
 
     renderActivities = (item) => {
-        const IconText = ({type, text}) => (
+        const IconText = ({type, text, style}) => (
             <span>
                 <Icon type={type} style={{marginRight: 8, color: '#08c'}}/>
-                {text}
+                <span style={style}>
+                    {text}
+                </span>
               </span>
         );
 
@@ -35,10 +37,10 @@ class ArticleListHome extends Component {
                     avatar={<Avatar src={item.avatar}/>}
                     title={
                         <span>
-                                <a className={styles.username}>
-                                    <h3>{item.title}</h3>
-                                </a>
-                            </span>
+                            <Link to={item.url}>
+                                <h3>{item.title}</h3>
+                            </Link>
+                        </span>
                     }
                     description={
                         <span className={styles.datetime} title="web前端性能优化">
@@ -52,11 +54,12 @@ class ArticleListHome extends Component {
                                 <Divider type="vertical"/>
                                 <IconText type="like-o" text="66"/>
                                 <Divider type="vertical"/>
-                                <IconText type="message" text="8888"/>
-
                             </span>
                     }
                 />
+
+                <Badge count={"111"} style={{backgroundColor: '#d48806'}}
+                       overflowCount={9999}/>
             </List.Item>
         );
     }
@@ -70,7 +73,8 @@ class ArticleListHome extends Component {
             time: "2017-12-12",
             viewCount: "123",
             commentCount: '123',
-            id: "1"
+            id: "1",
+            url: '/articles/doc/1'
         })
         articleList.push({
             avatar: "http://img.my.csdn.net/uploads/201712/17/1513517930_7778.png",
@@ -78,7 +82,8 @@ class ArticleListHome extends Component {
             time: "2017-12-12",
             viewCount: "123",
             commentCount: '123',
-            id: "2"
+            id: "2",
+            url: '/articles/doc/1'
         })
         articleList.push({
             avatar: "http://img.my.csdn.net/uploads/201712/17/1513517930_7778.png",
@@ -86,7 +91,8 @@ class ArticleListHome extends Component {
             time: "2017-12-12",
             viewCount: "123",
             commentCount: '123',
-            id: "3"
+            id: "3",
+            url: '/articles/doc/1'
         })
         articleList.push({
             avatar: "http://img.my.csdn.net/uploads/201712/17/1513517930_7778.png",
@@ -94,7 +100,8 @@ class ArticleListHome extends Component {
             time: "2017-12-12",
             viewCount: "123",
             commentCount: '123',
-            id: "4"
+            id: "4",
+            url: '/articles/doc/1'
         })
         articleList.push({
             avatar: "http://img.my.csdn.net/uploads/201712/17/1513517930_7778.png",
@@ -102,21 +109,21 @@ class ArticleListHome extends Component {
             time: "2017-12-12",
             viewCount: "123",
             commentCount: '123',
-            id: "5"
+            id: "5",
+            url: '/articles/doc/1'
         })
 
 
-        const { loading, loadingMore, showLoadingMore, data } = this.state;
+        const {loading, loadingMore, showLoadingMore, data} = this.state;
         const loadMore = showLoadingMore ? (
-            <div style={{ textAlign: 'center', marginTop: 12, height: 32, lineHeight: '32px' }}>
-                {loadingMore && <Spin />}
+            <div style={{textAlign: 'center', marginTop: 12, height: 32, lineHeight: '32px'}}>
+                {loadingMore && <Spin/>}
                 {!loadingMore && <Button onClick={this.onLoadMore}>更多</Button>}
             </div>
         ) : null;
 
         return (
             <div>
-
                 <Card
                     bodyStyle={{padding: 0}}
                     bordered={false}
@@ -126,6 +133,7 @@ class ArticleListHome extends Component {
                           dataSource={articleList}
                           renderItem={this.renderActivities}
                           className={styles.activitiesList}
+                          bordered={true}
                     >
                     </List>
                 </Card>

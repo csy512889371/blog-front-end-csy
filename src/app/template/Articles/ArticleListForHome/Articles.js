@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Form, Row, Col, Card, Button} from 'antd';
 import styles from './index.module.less';
-import StandardFormRow from '../../components/StandardFormRow'
-import TagSelect from '../../components/TagSelect'
+import StandardFormRow from '../../../components/StandardFormRow/index'
+import TagSelect from '../../../components/TagSelect/index'
 import {Link} from 'dva/router';
 
 const FormItem = Form.Item;
@@ -14,7 +14,7 @@ class Products extends Component {
     }
 
     render() {
-        const productUrl = '/articles/doc/1';
+        const productUrl = '/topics/video/1';
         return (
             <div>
                 <Row gutter={16} type="flex" justify="center">
@@ -211,6 +211,18 @@ class Products extends Component {
                                 </Card>
                             </Link>
                         </div>
+                    </Col>
+                </Row>
+
+                <Row gutter={16} type="flex" justify="center">
+                    <Col className="gutter-row" md={3}>
+                        <Card bordered={false}>
+                            <Button
+                                size="large"
+                            >
+                                加载更多
+                            </Button>
+                        </Card>
                     </Col>
                 </Row>
 

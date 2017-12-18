@@ -206,61 +206,9 @@ class Register extends Component {
                             ],
                         })(<Input size="large" type="password" placeholder="确认密码"/>)}
                     </FormItem>
-                    <FormItem>
-                        <InputGroup compact>
-                            <Select
-                                size="large"
-                                value={prefix}
-                                onChange={this.changePrefix}
-                                style={{width: '20%'}}
-                            >
-                                <Option value="86">+86</Option>
-                                <Option value="87">+87</Option>
-                            </Select>
-                            {getFieldDecorator('mobile', {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: '请输入手机号！',
-                                    },
-                                    {
-                                        pattern: /^1\d{10}$/,
-                                        message: '手机号格式错误！',
-                                    },
-                                ],
-                            })(
-                                <Input
-                                    size="large"
-                                    style={{width: '80%'}}
-                                    placeholder="11位手机号"
-                                />
-                            )}
-                        </InputGroup>
-                    </FormItem>
-                    <FormItem>
-                        <Row gutter={8}>
-                            <Col span={16}>
-                                {getFieldDecorator('captcha', {
-                                    rules: [
-                                        {
-                                            required: true,
-                                            message: '请输入验证码！',
-                                        },
-                                    ],
-                                })(<Input size="large" placeholder="验证码"/>)}
-                            </Col>
-                            <Col span={8}>
-                                <Button
-                                    size="large"
-                                    disabled={count}
-                                    className={styles.getCaptcha}
-                                    onClick={this.onGetCaptcha}
-                                >
-                                    {count ? `${count} s` : '获取验证码'}
-                                </Button>
-                            </Col>
-                        </Row>
-                    </FormItem>
+
+
+
                     <FormItem>
                         <Button
                             size="large"

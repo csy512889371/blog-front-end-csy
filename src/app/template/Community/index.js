@@ -18,8 +18,13 @@ class Community extends Component {
     }
 
     render() {
+        const {match} = this.props;
+
+        console.log('matchmatchmatchmatchmatch');
+        console.log(match);
 
         let categories = [];
+
         categories.push({
             name: "视频教程",
             code: "video"
@@ -43,7 +48,11 @@ class Community extends Component {
 
                 <div>
                     <div>
-                        <Menus getArticleList={(tag) => this.get_article_list(tag, 1)} categories={categories}
+                        <Menus current={match.params.type}
+                               fromUrl={"/blog/community"}
+                               cateId={match.params.id}
+                               getArticleList={(tag) => this.get_article_list(tag, 1)}
+                               categories={categories}
                                history={this.props.history}/>
                     </div>
 
@@ -51,17 +60,11 @@ class Community extends Component {
                         <Row gutter={16} type="flex" justify="center">
                             <Col className="gutter-row" md={12}>
                                 <Card bordered={false}>
-                                    <div className={style.container}>
-                                        <div className={style.contentContainer}>
-                                            <div className={style.content}>
-                                                <ArticleListSmall/>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <ArticleListSmall/>
                                 </Card>
                             </Col>
-                            <Col className="gutter-row" md={6}>
-                                <Card title="热门文章" bordered={false}>
+                            <Col className={style.gutterRow} md={6}>
+                                <Card title="热门文章">
                                     <p>敬请期待</p>
                                 </Card>
                             </Col>

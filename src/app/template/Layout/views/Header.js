@@ -80,14 +80,9 @@ export default class Header extends Component {
                         功能介绍
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="/blog/community">
-                    <Link to='/blog/community'>
+                <Menu.Item key="/blog/community/video">
+                    <Link to='/blog/community/video'>
                         社区
-                    </Link>
-                </Menu.Item>
-                <Menu.Item key="/blog/blogger">
-                    <Link to='/blog/blogger'>
-                        博客
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="/blog/resource">
@@ -108,7 +103,8 @@ export default class Header extends Component {
                 <Row>
                     <Col lg={4} md={5} sm={24} xs={24}>
                         <Link to="/" id="logo">
-                            <img alt="logo" src="http://img.my.csdn.net/uploads/201712/14/1513259107_8910.png"/>
+                            <img alt="logo" src="http://img.my.csdn.net/uploads/201712/14/1513259107_8910.png"
+                                 style={{height: "30px", width: "auto"}}/>
                             <span>Eva Architect</span>
                         </Link>
                     </Col>

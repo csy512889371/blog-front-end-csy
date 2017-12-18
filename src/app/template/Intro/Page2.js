@@ -23,7 +23,7 @@ export default class Page2 extends React.Component {
         const desc2 = (
             <div >
                 <div>
-                    <h3>查看、发布博客。</h3>
+                    <h4>查看书籍、文章。</h4>
                 </div>
             </div>
         );
@@ -31,7 +31,7 @@ export default class Page2 extends React.Component {
         const desc3 = (
             <div >
                 <div>
-                    <h1>688324454</h1>
+                    <h4>在沟通中成长</h4>
                 </div>
             </div>
         );
@@ -44,9 +44,9 @@ export default class Page2 extends React.Component {
                             <Card title="成长路线" style={{marginBottom: 24}} bordered={false}>
                                 <Steps direction={stepDirection}  current={4}>
                                     <Step title="社区" description={desc1}/>
-                                    <Step title="博客" description={desc2}/>
-                                    <Step title="关注qq群（架构师成长之路）" description={desc3}/>
-                                    <Step title="学习"/>
+                                    <Step title="资源" description={desc2}/>
+                                    <Step title="交流" description={desc3}/>
+                                    <Step title="架构师"/>
                                 </Steps>
                             </Card>
 
@@ -56,6 +56,17 @@ export default class Page2 extends React.Component {
                 </div>
 
                 <div className={styles.endDiv}>
+                    <Row gutter={16} type="flex" justify="center">
+                        <Col span={8}>
+                            <Card title="加入我们" bordered={false} className={styles.joinUs}>
+                                <div >
+                                    <h3>qq群（架构师成长之路）</h3>
+                                    <h2>688324454</h2>
+                                </div>
+                            </Card>
+                        </Col>
+                    </Row>
+
                     <Row gutter={16} type="flex" justify="center">
                         <Col span={8}>
                             <Card title="申明" bordered={false} className={styles.notifyDiv}>

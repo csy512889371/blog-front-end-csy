@@ -1,121 +1,118 @@
 import React from 'react';
 import Banner from './Banner';
+import {getStyle} from '../../utils';
+import {Badge, Row, Col, List, Avatar, Card, Timeline} from 'antd';
+import Menus from "../../components/menu/Menus";
+import styles from './index.module.less';
+import ArticleListSmall from '../Articles/ArticleListSmall';
 
-function getStyle() {
-    return `
-    html, body{
-      height: auto;
-    }
-    .page-wrapper {
-      background: #fff;
-    }
-    .main-wrapper {
-      background: transparent;
-      width: auto;
-      margin: 0;
-      border-radius: 0;
-      padding: 0;
-      min-height: 600px;
-    }
-    #header {
-      position: fixed;
-      z-index: 999;
-      background: rgba(0, 0, 0, 0.25);
-      border-bottom: 1px solid transparent;
-      transition: border .5s cubic-bezier(0.455, 0.03, 0.515, 0.955), background .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    }
-    #header .header-lang-button {
-      margin-top: 28px;
-      color: #fff;
-      border-color: #fff;
-    }
-    #header .ant-select-selection,
-    #header .ant-menu {
-      background: transparent;
-    }
-    #header .ant-select-search__field {
-      color: #eee;
-    }
-    #header .ant-select-arrow {
-      color: #fff;
-    }
-    #header .ant-select-selection__placeholder {
-      color: rgba(255,255,255,0.57);
-    }
-    #header.home-nav-white .ant-select-search__field {
-      color: rgba(0, 0, 0, 0.65);
-    }
-    #header.home-nav-white .ant-select-selection__placeholder {
-      color: rgb(204, 204, 204);
-    }
-    #header.home-nav-white {
-      background: rgba(255, 255, 255, 0.91);
-      border-bottom-color: #ebedee;
-    }
-    .home-nav-white #search-box {
-      border-left-color: #ebedee;
-    }
-    .home-nav-white #nav a {
-      color: rgba(0, 0, 0, 0.65);
-    }
-    #header.home-nav-white .header-lang-button:not(:hover) {
-      color: rgba(0, 0, 0, 0.65);
-      border-color: #d9d9d9;
-    }
-    #header.home-nav-white .version > .ant-select-selection {
-      color: rgba(0, 0, 0, 0.65);
-    }
-    #header.home-nav-white .version > .ant-select-selection:not(:hover) {
-      border-color: #d9d9d9;
-    }
-    #header.home-nav-white .version .ant-select-arrow {
-      color: rgba(0, 0, 0, 0.45);
-    }
-    .nav-phone-icon:before {
-      background: #eee;
-      box-shadow: 0 7px 0 0 #eee, 0 14px 0 0 #eee;
-    }
-    .home-nav-white .nav-phone-icon:before {
-      background: #777;
-      box-shadow: 0 7px 0 0 #777, 0 14px 0 0 #777;
-    }
-    .lang,
-    .version > .ant-select-selection,
-    #nav a {
-      color: #eee;
-      transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    }
-    #nav a.header-link {
-      color: #fff;
-    }
-    .home-nav-white #nav a.header-link {
-      color: rgba(0, 0, 0, .65);
-    }
-    #search-box {
-      border-left-color: rgba(235, 237, 238, .5);
-      transition: border 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    }
-    #footer {
-      background: #000;
-    }
-    #footer,
-    #footer h2 {
-      color: #999;
-    }
-    #footer a {
-      color: #eee;
-    }
-  `;
-}
-
+import {FormModal} from '../../components/ModalForm/index';
 
 class Topics extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalShow: false
+        }
+    }
+
+    fields = () => {
+        return [{
+            label: '点击',
+            type: 'buy',
+            name: 'title',
+            options: {
+                initialValue:"自动获取人工智能的百度网盘链接",
+                url:"https://sns.io/sell/GDHIVN6W"
+            }
+        }]
+    }
+
+    buy = () => {
+        this.setState({
+            modalShow: true
+        })
+    }
+
+    onCancel = () => {
+        this.setState({
+            modalShow: false
+        })
+    }
+
+    get_article_list = (tag, index) => {
+
+    }
+
     render() {
         const {match} = this.props;
+        console.log("asdfasdfasdfasdfasdf");
+        console.log(match);
+
+        let categories = [];
+
+        categories.push({
+            name: "视频教程",
+            code: "video"
+        });
+        categories.push({
+            name: "文章",
+            code: "article"
+        });
+        categories.push({
+            name: "书籍",
+            code: "book"
+        });
+        categories.push({
+            name: "帖子",
+            code: "note"
+        });
+
         return (
             <div>
-                <Banner/>
-                ID: {match.params.id}
+                <Banner buy={this.buy}  />
+                <div>
+                    <div>
+                        <Menus current={match.params.type}
+                               fromUrl={"/topics"}
+                               cateId={match.params.id}
+                               getArticleList={(tag) => this.get_article_list(tag, 1)} categories={categories}
+                               history={this.props.history}/>
+                    </div>
+
+                    <div>
+                        <Row gutter={16} type="flex" justify="center">
+                            <Col className="gutter-row" md={12}>
+                                <Card bordered={false}>
+                                    <ArticleListSmall/>
+                                </Card>
+                            </Col>
+                            <Col className={styles.gutterRow} md={6}>
+                                <Card title="购买说明">
+                                    <Timeline>
+                                        <Timeline.Item><Badge count={"单售"}/>商品要单独购买。</Timeline.Item>
+                                        <Timeline.Item>同一主题下的内容打包购买</Timeline.Item>
+                                        <Timeline.Item>点击购买-扫码支付</Timeline.Item>
+                                    </Timeline>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </div>
+
+                </div>
+
+
+                <FormModal
+                    modalKey="buyProduct"
+                    visible={this.state.modalShow}
+                    title="购买"
+                    fields={this.fields()}
+                    onCancel={this.onCancel}
+                    okText="保存"
+                    showCancel={false}
+                    noBtn={true}
+                />
 
                 <style dangerouslySetInnerHTML={{__html: getStyle()}}/>
             </div>

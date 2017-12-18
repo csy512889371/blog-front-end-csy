@@ -2,8 +2,11 @@ import React from 'react'
 import style from './index.module.less'
 import {Link} from 'dva/router';
 
-export const ArticleListCell = (props)=>(
-    <div className={`${style.container} `} onClick={()=>{props.history.push(`/detail/${props.data._id}`,{id:props.data._id});props.getArticleDetail(props.data._id)}}>
+export const ArticleListCell = (props) => (
+    <div className={`${style.container} `} onClick={() => {
+        props.history.push(`/detail/${props.data._id}`, {id: props.data._id});
+        props.getArticleDetail(props.data._id)
+    }}>
         <div>
             <img src={props.data.coverImg} alt=""/>
         </div>

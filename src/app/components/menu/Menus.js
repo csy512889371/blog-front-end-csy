@@ -1,30 +1,35 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import {Menu} from 'antd'
 import style from './index.module.less'
 
-export default class Menus extends Component{
-    constructor(props){
+export default class Menus extends Component {
+    constructor(props) {
         super(props);
         this.state = {
-            current:this.props.categories[0].code
+            current: this.props.categories[0].code
         }
     }
 
     handleClick = (e) => {
-        if(e.key === 'video'){
+        let {fromUrl, cateId} = this.props;
+
+        if (e.key === 'video') {
             this.props.getArticleList('');
-        }else{
+        } else {
             this.props.getArticleList(e.key);
         }
-        let toPath = e.key === 'video'?'/blog/community':'/blog/community/'+e.key;
+
+        let toPath = fromUrl + '/' + e.key;
         this.setState({
             current: e.key,
         });
-        this.props.history.push(toPath);
+
+        cateId = cateId === undefined ? "" : cateId;
+        this.props.history.push(toPath + "/" + cateId);
     };
 
-    render(){
-        return(
+    render() {
+        return (
             <Menu
                 onClick={this.handleClick}
                 selectedKeys={[this.state.current]}
@@ -32,7 +37,7 @@ export default class Menus extends Component{
                 className={style.MenuContainer}
             >
                 {
-                    this.props.categories.map((item,index)=>(
+                    this.props.categories.map((item, index) => (
                         <Menu.Item key={item.code}>
                             {item.name}
                         </Menu.Item>
@@ -43,8 +48,9 @@ export default class Menus extends Component{
     }
 
     componentDidMount() {
+
         this.setState({
-            current:this.props.history.location.pathname.replace('\/blog\/community','').replace("/","") || 'video' || 'video'
+            current: this.props.current || 'video'
         })
     }
 

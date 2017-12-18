@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from './Banner';
-import Products from './Products'
+import Products from '../Articles/ArticleListForHome/Articles'
 import {getStyle} from '../../utils';
 
  class Header extends React.Component {

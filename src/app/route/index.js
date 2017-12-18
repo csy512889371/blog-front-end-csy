@@ -14,6 +14,7 @@ import Articles from '../template/Articles/Info/index';
 import Topics from '../template/Topics';
 import Register from '../template/Register';
 import Community from '../template/Community';
+import Reset from '../template/Reset';
 
 const history = createBrowserHistory();
 
@@ -67,6 +68,15 @@ const LoginPage = (props) => {
     );
 };
 
+const ResetPage = (props) => {
+    return (
+        <UserLayout {...props}>
+            <Reset {...props}/>
+        </UserLayout>
+    );
+};
+
+
 const RegisterPage = (props) => {
     return (
         <UserLayout {...props}>
@@ -90,15 +100,16 @@ export default class CRouter extends Component {
                 <Switch>
                     <Route exact strict path="/" component={HomePage}/>
                     <Route path="/blog/intro" component={IntroPage}/>
-                    <Route path="/blog/community" component={CommunityPage} />
+                    <Route path="/blog/community/:type" component={CommunityPage} />
                     <Route path="/blog/blogger" component={NotFoundPage} />
                     <Route path="/blog/resource" component={NotFoundPage} />
 
                     <Route path="/user/login" component={LoginPage} />
                     <Route path="/user/register" component={RegisterPage} />
+                    <Route path="/user/reset" component={ResetPage} />
 
                     <Route path="/articles/doc/:id" component={ArticlesPage} />
-                    <Route path="/topics/:id" component={TopicsPage} />
+                    <Route path="/topics/:type/:id" component={TopicsPage} />
                 </Switch>
             </ConnectedRouter>
         )
