@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Banner from './Banner';
-import Products from '../Articles/ArticleListForHome/Articles'
+import {view as Topics} from '../Topics/TopicListForHome'
 import {getStyle} from '../../utils';
 
- class Header extends React.Component {
+class Header extends Component {
     render() {
         let props = this.props;
         return (
             <div className="main-wrapper">
                 <Banner {...props}/>
-                <Products/>
+                <Topics {...props}/>
                 <style dangerouslySetInnerHTML={{__html: getStyle()}}/>
             </div>
         )

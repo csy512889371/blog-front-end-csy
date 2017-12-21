@@ -11,9 +11,10 @@ import NotFound from './Exception/500';
 import Login from '../template/Login';
 
 import Articles from '../template/Articles/Info/index';
-import Topics from '../template/Topics';
+import Topics from '../template/Topics/TopicList/index';
 import Register from '../template/Register';
 import Community from '../template/Community';
+import SearchList from '../template/Articles/SearchList';
 import Reset from '../template/Reset';
 
 const history = createBrowserHistory();
@@ -30,6 +31,15 @@ const IntroPage = (props) => {
     return (
         <Layout12 {...props}>
             <Intro {...props}/>
+        </Layout12>
+    );
+};
+
+
+const SearchListPage = (props) => {
+    return (
+        <Layout12 {...props}>
+            <SearchList {...props}/>
         </Layout12>
     );
 };
@@ -103,6 +113,7 @@ export default class CRouter extends Component {
                     <Route path="/blog/community/:type" component={CommunityPage} />
                     <Route path="/blog/blogger" component={NotFoundPage} />
                     <Route path="/blog/resource" component={NotFoundPage} />
+                    <Route path="/article/search" component={SearchListPage} />
 
                     <Route path="/user/login" component={LoginPage} />
                     <Route path="/user/register" component={RegisterPage} />

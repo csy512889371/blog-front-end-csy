@@ -50,6 +50,9 @@ export default class Header extends Component {
         };
     }
 
+    doSearch = (value) => {
+        this.props.history.push("/article/search?search=" + value);
+    }
 
     render() {
         let pathname = this.props.location.pathname;
@@ -112,7 +115,7 @@ export default class Header extends Component {
                         <div id="search-box">
                             <Search
                                 placeholder="搜索文章..."
-                                onSearch={value => console.log(value)}
+                                onSearch={this.doSearch}
                                 enterButton
                                 style={{width: 300}}
                             />

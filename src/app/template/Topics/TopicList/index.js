@@ -1,12 +1,12 @@
 import React from 'react';
 import Banner from './Banner';
-import {getStyle} from '../../utils';
+import {getStyle} from '../../../utils/index';
 import {Badge, Row, Col, List, Avatar, Card, Timeline} from 'antd';
-import Menus from "../../components/menu/Menus";
+import Menus from "../../../components/menu/Menus";
 import styles from './index.module.less';
-import ArticleListSmall from '../Articles/ArticleListSmall';
+import ArticleListSmall from '../../Articles/ArticleListSmall/index';
 
-import {FormModal} from '../../components/ModalForm/index';
+import {FormModal} from '../../../components/ModalForm/index';
 
 class Topics extends React.Component {
 
