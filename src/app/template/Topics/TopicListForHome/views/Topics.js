@@ -19,7 +19,7 @@ class Topics extends Component {
         super(props)
         this.state = {
             number: 0,
-            size: 3,
+            size: 12,
             categoryIds: [],
         }
     }
@@ -37,16 +37,14 @@ class Topics extends Component {
      * 按照类别查询
      */
     handleFormSubmit = (checkedTags) => {
-        const {findTopicForPage} = this.props;
-
-        setTimeout(() => {
+        if (checkedTags !== this.state.categoryIds) {
+            const {findTopicForPage} = this.props;
             findTopicForPage({
                 "categoryIds": checkedTags,
                 number: this.state.number,
                 size: this.state.size,
             })
-        }, 0);
-
+        }
         this.setState({categoryIds: checkedTags});
     }
 
