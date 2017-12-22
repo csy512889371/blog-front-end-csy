@@ -24,7 +24,6 @@ export const findTopicForPageSuccess = (data, params) => ({
 });
 
 
-
 export const findTopicForPageError = (err, params) => ({
     type: FIND_TOPIC_FOR_PAGE_ERROR,
     err: err,

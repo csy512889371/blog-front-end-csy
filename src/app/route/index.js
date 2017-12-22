@@ -10,8 +10,8 @@ import Intro from '../template/Intro';
 import NotFound from './Exception/500';
 import Login from '../template/Login';
 
-import Articles from '../template/Articles/Info/index';
-import Topics from '../template/Topics/TopicList/index';
+import Videos from '../template/Videos/Info/index';
+import Topics from '../template/Videos/VideoListForTopic';
 import Register from '../template/Register';
 import Community from '../template/Community';
 import SearchList from '../template/Articles/SearchList';
@@ -52,10 +52,10 @@ const NotFoundPage = (props) => {
     );
 };
 
-const ArticlesPage = (props) => {
+const VideosPage = (props) => {
     return (
         <Layout12 {...props}>
-            <Articles {...props}/>
+            <Videos {...props}/>
         </Layout12>
     );
 };
@@ -119,7 +119,7 @@ export default class CRouter extends Component {
                     <Route path="/user/register" component={RegisterPage} />
                     <Route path="/user/reset" component={ResetPage} />
 
-                    <Route path="/articles/doc/:id" component={ArticlesPage} />
+                    <Route path="/articles/doc/:id" component={VideosPage} />
                     <Route path="/topics/:type/:id" component={TopicsPage} />
                 </Switch>
             </ConnectedRouter>

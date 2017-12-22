@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Form, Row, Col, Card, Button} from 'antd';
+import {Form, Row, Col, Card, Button, Spin, message} from 'antd';
 import {connect} from 'react-redux';
 import styles from './index.module.less';
 import StandardFormRow from '../../../../components/StandardFormRow/index'
@@ -9,6 +9,7 @@ import {selectVisibleTopicPage} from '../selector';
 import {findTopicForPage, findMoreTopicForPage} from '../actions';
 import {bindActionCreators} from 'redux';
 import chunk from "lodash/chunk";
+import _ from 'lodash'
 
 const FormItem = Form.Item;
 
@@ -17,7 +18,6 @@ class Topics extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            loading: false,
             number: 0,
             size: 3,
             categoryIds: [],
@@ -33,19 +33,27 @@ class Topics extends Component {
         })
     }
 
+    /**
+     * 按照类别查询
+     */
     handleFormSubmit = (checkedTags) => {
         const {findTopicForPage} = this.props;
-        findTopicForPage({
-            "categoryIds": checkedTags,
-            number: this.state.number,
-            size: this.state.size,
-        })
-        this.setState({ categoryIds: checkedTags });
+
+        setTimeout(() => {
+            findTopicForPage({
+                "categoryIds": checkedTags,
+                number: this.state.number,
+                size: this.state.size,
+            })
+        }, 0);
+
+        this.setState({categoryIds: checkedTags});
     }
 
+    /**
+     * 分页加载
+     */
     loadMoreData = () => {
-        //TODO
-        //this.setState({ loading: true });
         const {findMoreTopicForPage} = this.props;
         findMoreTopicForPage({
             "categoryIds": this.state.categoryIds,
@@ -91,18 +99,41 @@ class Topics extends Component {
         });
     }
 
+    /**
+     * 组件 数据加载中
+     */
+    loadingSpin = () => {
+        return (
+            <Row gutter={16} type="flex" justify="center"><Spin size="large"/> </Row>
+        )
+    }
 
+    /**
+     * 没有数据
+     */
+    noData = () => (
+        <Row gutter={16} type="flex" justify="center">
+            <p>没有数据</p>
+        </Row>
+    )
 
     render() {
         const {topicState} = this.props;
-        const resultData = topicState.data;
-        let isHasMoreData = false;
-        if (resultData !== undefined) {
-            const totalPages = resultData.data.totalPages === undefined ? 0 : resultData.data.totalPages;
-            if (totalPages !== 0 && totalPages > (this.state.number + 1)) {
-                isHasMoreData = true;
+        let {data: apiData, params, isLoadingList, isLoadingMore, err} = topicState;
+
+        let isHasNext = false;
+        if (_.has(apiData, 'data', 'totalPages')) {
+            const nextPage = params.number + 2;
+            if (nextPage > apiData.data.totalPages) {
+                isHasNext = false;
+            } else {
+                isHasNext = true;
             }
         }
+        if (err != undefined) {
+            message.error('系统异常请稍后再试');
+        }
+
         return (
             <div>
                 <Row gutter={16} type="flex" justify="center">
@@ -129,15 +160,16 @@ class Topics extends Component {
                     </Col>
                 </Row>
 
-                {topicState.data === undefined ? "" : this.getTopicList(topicState.data)}
+                {isLoadingList ? this.loadingSpin():
+                    _.has(topicState, 'data') ? this.getTopicList(topicState.data) : this.noData()}
 
                 {
-                    isHasMoreData &&
+                    isHasNext &&
                     <Row gutter={16} type="flex" justify="center">
                         <Col className="gutter-row" md={3}>
                             <Card bordered={false}>
                                 <Button
-                                    loading={this.state.loading}
+                                    loading={isLoadingMore}
                                     size="large"
                                     onClick={this.loadMoreData}
                                 >
@@ -161,7 +193,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     findTopicForPage: bindActionCreators(findTopicForPage, dispatch),
-    findMoreTopicForPage:bindActionCreators(findMoreTopicForPage, dispatch),
+    findMoreTopicForPage: bindActionCreators(findMoreTopicForPage, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Topics);

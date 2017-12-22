@@ -4,7 +4,7 @@ import {getStyle} from '../../../utils/index';
 import {Badge, Row, Col, List, Avatar, Card, Timeline} from 'antd';
 import Menus from "../../../components/menu/Menus";
 import styles from './index.module.less';
-import VideoListSmall from '../../Videos/VideoListSmall';
+import VideoListSmall from '../VideoListSmall/index';
 
 import {FormModal} from '../../../components/ModalForm/index';
 
