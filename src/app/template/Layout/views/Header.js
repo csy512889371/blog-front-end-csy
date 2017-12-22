@@ -51,7 +51,7 @@ export default class Header extends Component {
     }
 
     doSearch = (value) => {
-        this.props.history.push("/article/search?search=" + value);
+        this.props.history.push("/video/search?search=" + value);
     }
 
     render() {

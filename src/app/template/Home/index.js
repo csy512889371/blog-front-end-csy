@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Banner from './Banner';
-import {view as Topics} from '../Topics/TopicListForHome'
+import {view as Topics} from '../Topics/HomeTopics'
 import {getStyle} from '../../utils';
 
 class Header extends Component {

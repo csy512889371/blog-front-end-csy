@@ -5,15 +5,6 @@ import {Link} from 'dva/router';
 import styles from './index.module.less';
 
 
-function typeFunc(a) {
-    if (a.key === 'line') {
-        return 'right';
-    } else if (a.key === 'button') {
-        return 'bottom';
-    }
-    return 'left';
-}
-
 export default function Banner(props) {
 
     return (

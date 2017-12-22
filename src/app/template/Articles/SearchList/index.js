@@ -3,7 +3,7 @@ import globalStyles from '../../global.module.less';
 import {getStyle} from '../../../utils/index';
 import {Button, Row, Col, Input, Avatar, Card, message, Modal, Divider, Badge} from 'antd';
 import {Link} from 'dva/router';
-import VideoListSmall from '../../Videos/VideoListSmall';
+import VideoSubList from '../../TopicSubInfo/VideoSubList';
 
 const Search = Input.Search;
 class SearchList extends React.Component {
@@ -37,7 +37,7 @@ class SearchList extends React.Component {
                     <Row gutter={16} type="flex" justify="center">
                         <Col className="gutter-row" md={18}>
                             <Card style={{marginBottom: 24}} bordered={false}>
-                                <VideoListSmall/>
+                                <VideoSubList/>
                             </Card>
                         </Col>
                     </Row>

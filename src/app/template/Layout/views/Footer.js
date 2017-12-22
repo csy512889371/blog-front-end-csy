@@ -82,11 +82,11 @@ class Footer extends React.Component {
                             官网
                         </div>
                         <div>
-                            <a target="_blank" rel="noopener noreferrer" href="http://iconfont.cn/">iconfont</a> -
+                            <a target="_blank" href="http://iconfont.cn/">iconfont</a> -
                             矢量图
                         </div>
                         <div>
-                            <a target="_blank" rel="noopener noreferrer"
+                            <a target="_blank"
                                href="http://leonshi.com/redux-saga-in-chinese/docs/api/index.html">redux-saga</a> -
                             中文手册
                         </div>

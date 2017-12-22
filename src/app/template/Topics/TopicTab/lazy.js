@@ -3,15 +3,15 @@
  */
 import topicSagas from './sagas';
 import topicReducer from './reducer';
-import view from './views/Topics';
+import view from './views';
 import {BlogsReducerNames} from '../../constants';
-const topicName = BlogsReducerNames.topic;
+const topicVideo = BlogsReducerNames.topicVideo;
 const reducer = {
-    [topicName]: topicReducer
+    [topicVideo]: topicReducer
 };
 
 const sagas = {
-    [topicName]: topicSagas
+    [topicVideo]: topicSagas
 };
 
 export {sagas, reducer, view};

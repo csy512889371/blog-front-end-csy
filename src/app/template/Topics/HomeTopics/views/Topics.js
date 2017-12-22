@@ -158,7 +158,7 @@ class Topics extends Component {
                     </Col>
                 </Row>
 
-                {isLoadingList ? this.loadingSpin():
+                {isLoadingList ? this.loadingSpin() :
                     _.has(topicState, 'data') ? this.getTopicList(topicState.data) : this.noData()}
 
                 {

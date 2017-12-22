@@ -4,6 +4,7 @@ import {ConnectedRouter} from 'react-router-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import {Layout12} from '../template/Layout';
+import {view as TopicTab} from '../template/Topics/TopicTab/index';
 import UserLayout from '../layouts/UserLayout';
 import Home from '../template/Home';
 import Intro from '../template/Intro';
@@ -11,7 +12,6 @@ import NotFound from './Exception/500';
 import Login from '../template/Login';
 
 import Videos from '../template/Videos/Info/index';
-import Topics from '../template/Videos/VideoListForTopic';
 import Register from '../template/Register';
 import Community from '../template/Community';
 import SearchList from '../template/Articles/SearchList';
@@ -60,14 +60,13 @@ const VideosPage = (props) => {
     );
 };
 
-const TopicsPage = (props) => {
+const TopicTabPage = (props) => {
     return (
         <Layout12 {...props}>
-            <Topics {...props}/>
+            <TopicTab {...props}/>
         </Layout12>
     );
 };
-
 
 
 const LoginPage = (props) => {
@@ -110,17 +109,17 @@ export default class CRouter extends Component {
                 <Switch>
                     <Route exact strict path="/" component={HomePage}/>
                     <Route path="/blog/intro" component={IntroPage}/>
-                    <Route path="/blog/community/:type" component={CommunityPage} />
-                    <Route path="/blog/blogger" component={NotFoundPage} />
-                    <Route path="/blog/resource" component={NotFoundPage} />
-                    <Route path="/article/search" component={SearchListPage} />
+                    <Route path="/blog/community/:type" component={CommunityPage}/>
+                    <Route path="/blog/blogger" component={NotFoundPage}/>
+                    <Route path="/blog/resource" component={NotFoundPage}/>
+                    <Route path="/video/search" component={SearchListPage}/>
 
-                    <Route path="/user/login" component={LoginPage} />
-                    <Route path="/user/register" component={RegisterPage} />
-                    <Route path="/user/reset" component={ResetPage} />
+                    <Route path="/user/login" component={LoginPage}/>
+                    <Route path="/user/register" component={RegisterPage}/>
+                    <Route path="/user/reset" component={ResetPage}/>
 
-                    <Route path="/articles/doc/:id" component={VideosPage} />
-                    <Route path="/topics/:type/:id" component={TopicsPage} />
+                    <Route path="/videos/doc/:id" component={VideosPage}/>
+                    <Route path="/topics/:type/:id" component={TopicTabPage}/>
                 </Switch>
             </ConnectedRouter>
         )

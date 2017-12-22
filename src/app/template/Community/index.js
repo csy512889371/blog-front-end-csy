@@ -5,7 +5,7 @@ import {Button, Row, Col, List, Avatar, Card} from 'antd';
 import Menus from "../../components/menu/Menus";
 import {Link} from 'dva/router';
 import style from './index.module.less'
-import VideoListSmall from '../Videos/VideoListSmall';
+import VideoListSmall from '../TopicSubInfo/VideoSubList';
 
 class Community extends Component {
 

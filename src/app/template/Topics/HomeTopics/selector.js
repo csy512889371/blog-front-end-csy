@@ -3,9 +3,9 @@
  */
 import {createSelector} from 'reselect';
 
-const getBlogTopic = (state) => state.blogTopic;
+const getBlogTopic = (state) => state.blogTopicHome;
 
 export const selectVisibleTopicPage = createSelector(
     [getBlogTopic],
-    (blogTopic) => blogTopic
+    (blogTopicHome) => blogTopicHome
 );
