@@ -120,12 +120,14 @@ class Topics extends Component {
         let {data: apiData, params, isLoadingList, isLoadingMore, err} = topicState;
 
         let isHasNext = false;
-        if (_.has(apiData, 'data', 'totalPages')) {
-            const nextPage = params.number + 2;
-            if (nextPage > apiData.data.totalPages) {
-                isHasNext = false;
-            } else {
-                isHasNext = true;
+        if (_.has(apiData, 'data')) {
+            if (_.has(apiData.data, 'totalPages')) {
+                const nextPage = params.number + 2;
+                if (nextPage > apiData.data.totalPages) {
+                    isHasNext = false;
+                } else {
+                    isHasNext = true;
+                }
             }
         }
         if (err != undefined) {

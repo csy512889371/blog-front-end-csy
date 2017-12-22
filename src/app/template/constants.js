@@ -1,6 +1,6 @@
 
 export const BlogsReducerNames = {
     topicHome: 'blogTopicHome',
-    topicVideo:'blogTopicVideo'
-
+    topicVideo:'blogTopicVideo',
+    videoSearchList:"blogVideoSearchList"
 };

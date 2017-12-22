@@ -5,7 +5,8 @@ import {topicServer} from '../utils/apiServer';
 import apiRelativePath from './apiRelativePath';
 
 const apiPath = {
-    findForPageByTopic: topicServer + apiRelativePath.findForPageByTopic
+    findForPageByTopic: topicServer + apiRelativePath.findForPageByTopic,
+    findForPageByName: topicServer + apiRelativePath.findForPageByName
 };
 
 export default apiPath;
