@@ -1,7 +1,7 @@
 /**
  * Created by chenshiying on 17/9/25.
  */
-import {FIND_TOPIC_FOR_PAGE_FETCH, FIND_TOPIC_FOR_PAGE_SUCCESS, FIND_TOPIC_FOR_PAGE_ERROR} from './actionTypes';
+import {FIND_TOPIC_FOR_PAGE_FETCH, FIND_TOPIC_FOR_PAGE_SUCCESS, FIND_TOPIC_FOR_PAGE_ERROR,FIND_MORE_TOPIC_FOR_PAGE_SUCCESS,FIND_MORE_TOPIC_FOR_PAGE_FETCH} from './actionTypes';
 
 export default (state = {}, action) => {
     switch (action.type) {
@@ -11,6 +11,28 @@ export default (state = {}, action) => {
             }
         }
         case FIND_TOPIC_FOR_PAGE_SUCCESS: {
+            return {
+                type: FIND_TOPIC_FOR_PAGE_SUCCESS, data: action.data, params: action.params
+            }
+        }
+
+        case FIND_TOPIC_FOR_PAGE_FETCH: {
+            return {
+                type: FIND_MORE_TOPIC_FOR_PAGE_FETCH,
+                ...state
+            }
+        }
+
+        case FIND_MORE_TOPIC_FOR_PAGE_SUCCESS: {
+
+            let topicDatas = [];
+            if (state.data !== undefined && state.data.data !== undefined && state.data.data.content !== undefined) {
+                topicDatas = state.data.data.content;
+            }
+
+            topicDatas.push(...action.data.data.content);
+            action.data.data.content = topicDatas;
+
             return {
                 type: FIND_TOPIC_FOR_PAGE_SUCCESS, data: action.data, params: action.params
             }

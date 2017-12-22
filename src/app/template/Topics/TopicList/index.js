@@ -4,7 +4,7 @@ import {getStyle} from '../../../utils/index';
 import {Badge, Row, Col, List, Avatar, Card, Timeline} from 'antd';
 import Menus from "../../../components/menu/Menus";
 import styles from './index.module.less';
-import ArticleListSmall from '../../Articles/ArticleListSmall/index';
+import VideoListSmall from '../../Videos/VideoListSmall';
 
 import {FormModal} from '../../../components/ModalForm/index';
 
@@ -85,7 +85,7 @@ class Topics extends React.Component {
                         <Row gutter={16} type="flex" justify="center">
                             <Col className="gutter-row" md={12}>
                                 <Card bordered={false}>
-                                    <ArticleListSmall/>
+                                    <VideoListSmall/>
                                 </Card>
                             </Col>
                             <Col className={styles.gutterRow} md={6}>

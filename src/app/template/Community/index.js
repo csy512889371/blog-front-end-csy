@@ -5,7 +5,7 @@ import {Button, Row, Col, List, Avatar, Card} from 'antd';
 import Menus from "../../components/menu/Menus";
 import {Link} from 'dva/router';
 import style from './index.module.less'
-import ArticleListSmall from '../Articles/ArticleListSmall';
+import VideoListSmall from '../Videos/VideoListSmall';
 
 class Community extends Component {
 
@@ -60,7 +60,7 @@ class Community extends Component {
                         <Row gutter={16} type="flex" justify="center">
                             <Col className="gutter-row" md={12}>
                                 <Card bordered={false}>
-                                    <ArticleListSmall/>
+                                    <VideoListSmall/>
                                 </Card>
                             </Col>
                             <Col className={style.gutterRow} md={6}>

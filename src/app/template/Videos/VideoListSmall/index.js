@@ -4,7 +4,7 @@ import styles from './index.module.less'
 import {Spin, Button, Card, List, Avatar, Icon, Divider, Badge} from 'antd';
 import {Link} from 'dva/router';
 
-class ArticleListHome extends Component {
+class VideoListHome extends Component {
 
     constructor(props) {
         super(props);
@@ -143,4 +143,4 @@ class ArticleListHome extends Component {
 
 }
 
-export default ArticleListHome;
+export default VideoListHome;
