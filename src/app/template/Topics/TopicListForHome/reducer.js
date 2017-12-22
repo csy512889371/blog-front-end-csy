@@ -2,6 +2,7 @@
  * Created by chenshiying on 17/9/25.
  */
 import {FIND_TOPIC_FOR_PAGE_FETCH, FIND_TOPIC_FOR_PAGE_SUCCESS, FIND_TOPIC_FOR_PAGE_ERROR,FIND_MORE_TOPIC_FOR_PAGE_SUCCESS,FIND_MORE_TOPIC_FOR_PAGE_FETCH} from './actionTypes';
+import _ from 'lodash'
 
 export default (state = {}, action) => {
     switch (action.type) {
@@ -24,14 +25,11 @@ export default (state = {}, action) => {
         }
 
         case FIND_MORE_TOPIC_FOR_PAGE_SUCCESS: {
-
             let topicDatas = [];
-            if (state.data !== undefined && state.data.data !== undefined && state.data.data.content !== undefined) {
-                topicDatas = state.data.data.content;
+            if(_.has(state, 'data', 'data', 'content')) {
+                topicDatas = _.cloneDeep(state.data.data.content)
             }
-
-            topicDatas.push(...action.data.data.content);
-            action.data.data.content = topicDatas;
+            action.data.data.content = _.unionWith(topicDatas, action.data.data.content, (a, b) => a.id === b.id);
 
             return {
                 type: FIND_TOPIC_FOR_PAGE_SUCCESS, data: action.data, params: action.params
