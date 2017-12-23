@@ -1,17 +1,17 @@
 /**
  * Created by chenshiying on 17/9/25.
  */
-import topicSagas from './sagas';
-import topicReducer from './reducer';
+import topicVideoSagas from './sagas';
+import topicVideoReducer from './reducer';
 import view from './views';
 import {BlogsReducerNames} from '../../constants';
 const topicVideo = BlogsReducerNames.topicVideo;
 const reducer = {
-    [topicVideo]: topicReducer
+    [topicVideo]: topicVideoReducer
 };
 
 const sagas = {
-    [topicVideo]: topicSagas
+    [topicVideo]: topicVideoSagas
 };
 
 export {sagas, reducer, view};

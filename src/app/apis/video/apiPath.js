@@ -6,7 +6,9 @@ import apiRelativePath from './apiRelativePath';
 
 const apiPath = {
     findForPageByTopic: topicServer + apiRelativePath.findForPageByTopic,
-    findForPageByName: topicServer + apiRelativePath.findForPageByName
+    findForPageByName: topicServer + apiRelativePath.findForPageByName,
+
+    findById: topicServer + apiRelativePath.findById
 };
 
 export default apiPath;

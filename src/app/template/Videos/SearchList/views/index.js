@@ -2,7 +2,6 @@ import React from 'react';
 import globalStyles from '../../../global.module.less';
 import {getStyle} from '../../../../utils/index';
 import {Row, Col, Input, Card, message, Spin} from 'antd';
-import {Link} from 'dva/router';
 import VideoSubList from '../../../TopicSubInfo/VideoSubList/index';
 import {selectVisibleVideoSearchPage} from '../selector';
 

@@ -1,0 +1,8 @@
+/**
+ * Created by chenshiying on 17/9/25.
+ */
+export const FIND_VIDEO_INFO = 'VIDEOINFO/FIND';
+export const FIND_VIDEO_INFO_FETCH = 'VIDEOINFO/FINDFETCH';
+export const FIND_VIDEO_INFO_SUCCESS = 'VIDEOINFO/FINDSUCCESS';
+export const FIND_VIDEO_INFO_ERROR = 'VIDEOINFO/FINDERROR';
+

@@ -6,6 +6,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import {Layout12} from '../template/Layout';
 import {view as TopicTab} from '../template/Topics/TopicTab/index';
 import {view as SearchList} from '../template/Videos/SearchList';
+import {view as Videos} from '../template/Videos/Info';
 
 import UserLayout from '../layouts/UserLayout';
 import Home from '../template/Home';
@@ -13,7 +14,7 @@ import Intro from '../template/Intro';
 import NotFound from './Exception/500';
 import Login from '../template/Login';
 
-import Videos from '../template/Videos/Info/index';
+
 import Register from '../template/Register';
 import Community from '../template/Community';
 import Reset from '../template/Reset';

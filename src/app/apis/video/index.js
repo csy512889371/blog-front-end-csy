@@ -1,5 +1,5 @@
-import {findForPageByTopic, findForPageByName} from './api';
+import {findForPageByTopic, findForPageByName, findById} from './api';
 
 export {
-    findForPageByTopic, findForPageByName
+    findForPageByTopic, findForPageByName, findById
 };

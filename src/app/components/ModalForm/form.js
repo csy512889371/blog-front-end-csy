@@ -70,7 +70,7 @@ class ModForm extends React.Component {
     getBuyTextField = field => (
         <div>
             <a target="_blank" rel="扫码支付" href={field.options.url}>
-                <Badge count={"扫描支付"} style={{backgroundColor: '#135200'}}/>
+                <Button type="primary" >扫描支付</Button>
             </a>
             <div>
                 {field.options && field.options.initialValue}

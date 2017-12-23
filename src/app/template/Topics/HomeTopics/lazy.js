@@ -1,17 +1,17 @@
 /**
  * Created by chenshiying on 17/9/25.
  */
-import topicSagas from './sagas';
-import topicReducer from './reducer';
+import topicHomeSagas from './sagas';
+import topicHomeReducer from './reducer';
 import view from './views/Topics';
 import {BlogsReducerNames} from '../../constants';
 const topicName = BlogsReducerNames.topicHome;
 const reducer = {
-    [topicName]: topicReducer
+    [topicName]: topicHomeReducer
 };
 
 const sagas = {
-    [topicName]: topicSagas
+    [topicName]: topicHomeSagas
 };
 
 export {sagas, reducer, view};

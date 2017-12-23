@@ -7,7 +7,7 @@ import * as api from '../../../apis/index';
 import {findTopicVideoForPageFetch, findTopicVideoForPageSuccess, findTopicVideoForPageError,findMoreTopicVideoForPageSuccess, findMoreTopicVideoForPageFetch} from './actions';
 import {FIND_TOPIC_VIDEO_FOR_PAGE, FIND_MORE_TOPIC_VIDEO_FOR_PAGE} from './actionTypes';
 
-function topicPage(params) {
+function topicVideoPage(params) {
     const promise = api.video.findForPageByTopic(params);
     return promise.then((res) => res.json())
         .then((res) => res)
@@ -20,7 +20,7 @@ function* fetchTopicVideoPage(data) {
     const params = data.params;
     try {
         yield put(findTopicVideoForPageFetch());
-        const result = yield call(topicPage, params);
+        const result = yield call(topicVideoPage, params);
         yield put(findTopicVideoForPageSuccess(result, params));
     } catch (e) {
         yield put(findTopicVideoForPageError(e, params));
@@ -31,7 +31,7 @@ function* fetchMoreTopicVideoPage(data) {
     const params = data.params;
     try {
         yield put(findMoreTopicVideoForPageFetch());
-        const result = yield call(topicPage, params);
+        const result = yield call(topicVideoPage, params);
         yield put(findMoreTopicVideoForPageSuccess(result, params));
     } catch (e) {
         yield put(findTopicVideoForPageError(e, params));

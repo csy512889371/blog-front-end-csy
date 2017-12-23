@@ -6,7 +6,9 @@ import apiPath from './apiPath';
 
 const findForPageByTopic = (data) => request.post(apiPath.findForPageByTopic, data);
 const findForPageByName = (data) => request.post(apiPath.findForPageByName, data);
-export {findForPageByTopic, findForPageByName};
+const findById = (data) => request.post(apiPath.findById, data);
+
+export {findForPageByTopic, findForPageByName, findById};
 
 
 
