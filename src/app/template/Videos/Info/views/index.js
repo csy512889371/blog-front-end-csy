@@ -6,6 +6,7 @@ import globalStyles from '../../../global.module.less';
 import {getStyle} from '../../../../utils/index';
 import {Button, Row, Col, Card, Divider, Badge, message} from 'antd';
 import {FormModal} from '../../../../components/ModalForm/index';
+import {noData} from "../../../../components/CommonUI"
 
 import {selectVisibleVideoInfoPage} from '../selector';
 import _ from 'lodash'
@@ -118,7 +119,6 @@ class VideoInfo extends Component {
     );
 
 
-
     render() {
 
         const {videoInfoState} = this.props;
@@ -126,19 +126,16 @@ class VideoInfo extends Component {
 
         if (err !== undefined) {
             message.error('系统异常请稍后再试');
+            return noData();
         }
 
         return (
             <div>
                 <section className={globalStyles.bannerHeaderWrapper}/>
 
-                {_.has(apiData, 'data') ?
-                    (apiData.data !== null ? this.pageInfo() : this.noData())
-                    : null}
+                {_.has(apiData, ['data', 'id']) ? this.pageInfo() : noData()}
 
                 <style dangerouslySetInnerHTML={{__html: getStyle()}}/>
-
-
 
                 <FormModal
                     modalKey="buyProduct"

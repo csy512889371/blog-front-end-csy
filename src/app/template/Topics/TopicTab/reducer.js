@@ -45,7 +45,7 @@ export default (state = {}, action) => {
 
         case FIND_MORE_TOPIC_VIDEO_FOR_PAGE_SUCCESS: {
             let topicDatas = [];
-            if (_.has(state, 'data', 'data', 'content')) {
+            if (_.has(state, ['data', 'data', 'content'])) {
                 topicDatas = _.cloneDeep(state.data.data.content)
             }
             action.data.data.content = _.unionWith(topicDatas, action.data.data.content, (a, b) => a.id === b.id);

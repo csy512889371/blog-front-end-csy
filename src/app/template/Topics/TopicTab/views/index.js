@@ -6,12 +6,14 @@ import styles from './index.module.less';
 import {getStyle} from '../../../../utils/index';
 import VideoSubList from '../../../TopicSubInfo/VideoSubList/index';
 import {FormModal} from '../../../../components/ModalForm/index';
-
+import {noData, loadingSpin} from "../../../../components/CommonUI"
 import {selectVisibleTopicVideoPage} from '../selector';
 import _ from 'lodash'
 import {findTopicVideoForPage, findMoreTopicVideoForPage} from '../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+
+import {getCategory} from '../../../constants'
 
 class TopicTab extends Component {
 
@@ -69,41 +71,6 @@ class TopicTab extends Component {
         })
     }
 
-    getCategory = () => {
-        let categories = [];
-
-        categories.push({
-            name: "视频教程",
-            code: "video"
-        });
-        categories.push({
-            name: "文章",
-            code: "article"
-        });
-        categories.push({
-            name: "书籍",
-            code: "book"
-        });
-        categories.push({
-            name: "帖子",
-            code: "note"
-        });
-
-        return categories
-    };
-
-    noData = () => (
-        <Row gutter={16} type="flex" justify="center">
-            <p>没有数据</p>
-        </Row>
-    );
-
-    loadingSpin = () => {
-        return (
-            <Row gutter={16} type="flex" justify="center"><Spin size="large"/> </Row>
-        )
-    }
-
     getSubTopic = () => {
         const {topicVideoState, match} = this.props;
 
@@ -115,12 +82,7 @@ class TopicTab extends Component {
         let {data: apiData, params, isLoadingMore} = topicVideoState;
 
         let isHasNext = false;
-        if (_.has(apiData, 'data')) {
-
-            if (!_.has(apiData.data, 'totalPages')) {
-                return null;
-            }
-
+        if (_.has(apiData, ['data', 'totalPages'])) {
             const nextPage = params.number + 2;
             if (nextPage > apiData.data.totalPages) {
                 isHasNext = false;
@@ -143,6 +105,7 @@ class TopicTab extends Component {
 
         if (err !== undefined) {
             message.error('系统异常请稍后再试');
+            return noData();
         }
 
         return (
@@ -155,7 +118,7 @@ class TopicTab extends Component {
                                cateId={match.params.id}
                                getArticleList={(tag) => {
                                }}
-                               categories={this.getCategory()}
+                               categories={getCategory()}
                                history={this.props.history}/>
                     </div>
 
@@ -163,9 +126,8 @@ class TopicTab extends Component {
                         <Row gutter={16} type="flex" justify="center">
                             <Col className="gutter-row" md={12}>
                                 <Card bordered={false}>
-                                    {isLoadingList ? this.loadingSpin() :
-                                        _.has(apiData, 'data') ? this.getSubTopic() : this.noData()}
-
+                                    {isLoadingList ? loadingSpin() :
+                                        _.has(apiData, ['data', 'content']) ? this.getSubTopic() : noData()}
                                 </Card>
                             </Col>
                             <Col className={styles.gutterRow} md={6}>

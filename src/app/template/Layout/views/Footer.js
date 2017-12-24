@@ -77,7 +77,7 @@ class Footer extends React.Component {
                     <li>
                         <h2><Icon type="link"/> 资源链接</h2>
                         <div>
-                            <a href="https://github.com/ReactTraining/react-router">react-router</a>
+                            <a target="_blank" href="https://github.com/ReactTraining/react-router">react-router</a>
                             <span> - </span>
                             官网
                         </div>

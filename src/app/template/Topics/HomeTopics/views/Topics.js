@@ -8,6 +8,7 @@ import {Link} from 'dva/router';
 import {selectVisibleTopicPage} from '../selector';
 import {findTopicForPage, findMoreTopicForPage} from '../actions';
 import {bindActionCreators} from 'redux';
+import {noData, loadingSpin} from "../../../../components/CommonUI"
 import chunk from "lodash/chunk";
 import _ from 'lodash'
 
@@ -60,7 +61,7 @@ class Topics extends Component {
         })
     }
 
-    getTopicList = (result) => {
+    getTopicList = (topicList) => {
 
         function getTopicItem(topicSub) {
             return topicSub.map((topic, i) => {
@@ -87,7 +88,7 @@ class Topics extends Component {
             })
         }
 
-        const topicGroup = chunk(result.data.content, 3);
+        const topicGroup = chunk(topicList, 3);
         return topicGroup.map((topicSub, i) => {
             return (
                 <Row gutter={16} type="flex" justify="center" key={"groupId_" + i}>
@@ -97,42 +98,26 @@ class Topics extends Component {
         });
     }
 
-    /**
-     * 组件 数据加载中
-     */
-    loadingSpin = () => {
-        return (
-            <Row gutter={16} type="flex" justify="center"><Spin size="large"/> </Row>
-        )
-    }
-
-    /**
-     * 没有数据
-     */
-    noData = () => (
-        <Row gutter={16} type="flex" justify="center">
-            <p>没有数据</p>
-        </Row>
-    )
 
     render() {
         const {topicState} = this.props;
         let {data: apiData, params, isLoadingList, isLoadingMore, err} = topicState;
+        if (err !== undefined) {
+            message.error('系统异常请稍后再试');
+            return noData();
+        }
+
 
         let isHasNext = false;
-        if (_.has(apiData, 'data')) {
-            if (_.has(apiData.data, 'totalPages')) {
-                const nextPage = params.number + 2;
-                if (nextPage > apiData.data.totalPages) {
-                    isHasNext = false;
-                } else {
-                    isHasNext = true;
-                }
+        if (_.has(apiData, ['data', 'totalPages'])) {
+            const nextPage = params.number + 2;
+            if (nextPage > apiData.data.totalPages) {
+                isHasNext = false;
+            } else {
+                isHasNext = true;
             }
         }
-        if (err != undefined) {
-            message.error('系统异常请稍后再试');
-        }
+
 
         return (
             <div>
@@ -160,8 +145,8 @@ class Topics extends Component {
                     </Col>
                 </Row>
 
-                {isLoadingList ? this.loadingSpin() :
-                    _.has(topicState, 'data') ? this.getTopicList(topicState.data) : this.noData()}
+                {isLoadingList ? loadingSpin() :
+                    _.has(topicState, ['data', 'data', 'content']) ? this.getTopicList(topicState.data.data.content) : noData()}
 
                 {
                     isHasNext &&

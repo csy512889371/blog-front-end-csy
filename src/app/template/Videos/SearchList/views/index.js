@@ -3,6 +3,7 @@ import globalStyles from '../../../global.module.less';
 import {getStyle} from '../../../../utils/index';
 import {Row, Col, Input, Card, message, Spin} from 'antd';
 import VideoSubList from '../../../TopicSubInfo/VideoSubList/index';
+import {noData, loadingSpin} from "../../../../components/CommonUI"
 import {selectVisibleVideoSearchPage} from '../selector';
 
 import _ from 'lodash'
@@ -63,27 +64,13 @@ class SearchList extends React.Component {
         })
     }
 
-    noData = () => (
-        <Row gutter={16} type="flex" justify="center">
-            <p>没有数据</p>
-        </Row>
-    );
-
-    loadingSpin = () => {
-        return (
-            <Row gutter={16} type="flex" justify="center"><Spin size="large"/> </Row>
-        )
-    }
 
     getSubTopic = () => {
         const {videoSearchState} = this.props;
         let {data: apiData, params, isLoadingMore} = videoSearchState;
 
         let isHasNext = false;
-        if (_.has(apiData, 'data')) {
-            if (!_.has(apiData.data, 'totalPages')) {
-                return null;
-            }
+        if (_.has(apiData, ['data', 'totalPages'])) {
             const nextPage = params.number + 2;
             if (nextPage > apiData.data.totalPages) {
                 isHasNext = false;
@@ -106,6 +93,7 @@ class SearchList extends React.Component {
 
         if (err !== undefined) {
             message.error('系统异常请稍后再试');
+            return noData;
         }
 
         return (
@@ -130,8 +118,8 @@ class SearchList extends React.Component {
                     <Row gutter={16} type="flex" justify="center">
                         <Col className="gutter-row" md={18}>
                             <Card style={{marginBottom: 24}} bordered={false}>
-                                {isLoadingList ? this.loadingSpin() :
-                                    _.has(apiData, 'data') ? this.getSubTopic() : this.noData()}
+                                {isLoadingList ? loadingSpin() :
+                                    _.has(apiData, ['data', 'content']) ? this.getSubTopic() : noData()}
                             </Card>
                         </Col>
                     </Row>

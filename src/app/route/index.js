@@ -16,7 +16,7 @@ import Login from '../template/Login';
 
 
 import Register from '../template/Register';
-import Community from '../template/Community';
+import {view as Community} from '../template/Community';
 import Reset from '../template/Reset';
 const history = createBrowserHistory();
 

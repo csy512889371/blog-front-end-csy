@@ -1,17 +1,23 @@
 /**
  * Created by chenshiying on 17/9/28.
  */
-import { call, put, takeLatest } from 'redux-saga/effects';
+import {call, put, takeLatest} from 'redux-saga/effects';
 import * as api from '../../../apis/index';
 
-import {findTopicVideoForPageFetch, findTopicVideoForPageSuccess, findTopicVideoForPageError,findMoreTopicVideoForPageSuccess, findMoreTopicVideoForPageFetch} from './actions';
+import {
+    findTopicVideoForPageFetch,
+    findTopicVideoForPageSuccess,
+    findTopicVideoForPageError,
+    findMoreTopicVideoForPageSuccess,
+    findMoreTopicVideoForPageFetch
+} from './actions';
 import {FIND_TOPIC_VIDEO_FOR_PAGE, FIND_MORE_TOPIC_VIDEO_FOR_PAGE} from './actionTypes';
 
 function topicVideoPage(params) {
     const promise = api.video.findForPageByTopic(params);
     return promise.then((res) => res.json())
         .then((res) => res)
-        .catch( (err) => {
+        .catch((err) => {
             throw err;
         });
 }

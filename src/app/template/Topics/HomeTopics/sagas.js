@@ -1,17 +1,23 @@
 /**
  * Created by chenshiying on 17/9/28.
  */
-import { call, put, takeLatest } from 'redux-saga/effects';
+import {call, put, takeLatest} from 'redux-saga/effects';
 import * as api from '../../../apis';
 
-import {findTopicForPageFetch, findTopicForPageSuccess, findTopicForPageError,findMoreTopicForPageSuccess, findMoreTopicForPageFetch} from './actions';
+import {
+    findTopicForPageFetch,
+    findTopicForPageSuccess,
+    findTopicForPageError,
+    findMoreTopicForPageSuccess,
+    findMoreTopicForPageFetch
+} from './actions';
 import {FIND_TOPIC_FOR_PAGE, FIND_MORE_TOPIC_FOR_PAGE} from './actionTypes';
 
 function topicPage(params) {
     const promise = api.topic.findForPage(params);
     return promise.then((res) => res.json())
         .then((res) => res)
-        .catch( (err) => {
+        .catch((err) => {
             throw err;
         });
 }
