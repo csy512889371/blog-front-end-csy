@@ -79,16 +79,11 @@ class TopicTab extends Component {
             return null;
         }
 
-        let {data: apiData, params, isLoadingMore} = topicVideoState;
+        let {data: apiData, isLoadingMore} = topicVideoState;
 
         let isHasNext = false;
-        if (_.has(apiData, ['data', 'totalPages'])) {
-            const nextPage = params.number + 2;
-            if (nextPage > apiData.data.totalPages) {
-                isHasNext = false;
-            } else {
-                isHasNext = true;
-            }
+        if (_.has(apiData, ['data','last'])) {
+            isHasNext = apiData.data.last;
         }
 
         return (

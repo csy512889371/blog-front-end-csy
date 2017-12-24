@@ -27,9 +27,8 @@ class Community extends Component {
     componentDidMount() {
         const {findCommunitySubTopicForPage, match} = this.props;
         const subType = match.params.type;
-        console.log(subType);
         findCommunitySubTopicForPage({
-            topicId: 1,
+            topicId: "",
             number: this.state.number,
             size: this.state.size,
         })
@@ -41,13 +40,8 @@ class Community extends Component {
         let {data: apiData, params, isLoadingMore} = communitySubTopicState;
 
         let isHasNext = false;
-        if (_.has(apiData, ['data','totalPages'])) {
-            const nextPage = params.number + 2;
-            if (nextPage > apiData.data.totalPages) {
-                isHasNext = false;
-            } else {
-                isHasNext = true;
-            }
+        if (_.has(apiData, ['data', 'last'])) {
+            isHasNext = apiData.data.last;
         }
 
         return (
@@ -63,7 +57,6 @@ class Community extends Component {
     render() {
         const {communitySubTopicState, match} = this.props;
         let {data: apiData, isLoadingList, err} = communitySubTopicState;
-
         if (err !== undefined) {
             message.error('系统异常请稍后再试');
             return noData();

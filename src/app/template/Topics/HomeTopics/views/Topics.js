@@ -101,23 +101,16 @@ class Topics extends Component {
 
     render() {
         const {topicState} = this.props;
-        let {data: apiData, params, isLoadingList, isLoadingMore, err} = topicState;
+        let {data: apiData, isLoadingList, isLoadingMore, err} = topicState;
         if (err !== undefined) {
             message.error('系统异常请稍后再试');
             return noData();
         }
 
-
         let isHasNext = false;
-        if (_.has(apiData, ['data', 'totalPages'])) {
-            const nextPage = params.number + 2;
-            if (nextPage > apiData.data.totalPages) {
-                isHasNext = false;
-            } else {
-                isHasNext = true;
-            }
+        if (_.has(apiData, ['data','last'])) {
+            isHasNext = apiData.data.last;
         }
-
 
         return (
             <div>

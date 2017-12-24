@@ -70,13 +70,8 @@ class SearchList extends React.Component {
         let {data: apiData, params, isLoadingMore} = videoSearchState;
 
         let isHasNext = false;
-        if (_.has(apiData, ['data', 'totalPages'])) {
-            const nextPage = params.number + 2;
-            if (nextPage > apiData.data.totalPages) {
-                isHasNext = false;
-            } else {
-                isHasNext = true;
-            }
+        if (_.has(apiData, ['data','last'])) {
+            isHasNext = apiData.data.last;
         }
 
         return (
