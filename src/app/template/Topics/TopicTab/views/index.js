@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Banner from './Banner';
-import {Badge, Row, Col, Card, Timeline, Spin, message} from 'antd';
+import {Badge, Row, Col, Card, Timeline, message} from 'antd';
 import Menus from "../../../../components/menu/Menus";
 import styles from './index.module.less';
 import {getStyle} from '../../../../utils/index';
@@ -21,6 +21,7 @@ class TopicTab extends Component {
         super(props);
         this.state = {
             modalShow: false,
+            buyUrl: null,
             number: 0,
             size: 12,
         }
@@ -45,14 +46,15 @@ class TopicTab extends Component {
             name: 'title',
             options: {
                 initialValue: "自动获取人工智能的百度网盘链接",
-                url: "https://sns.io/sell/GDHIVN6W"
+                url: this.state.buyUrl
             }
         }]
     };
 
-    buy = () => {
+    buy = (buyUrl) => {
         this.setState({
-            modalShow: true
+            modalShow: true,
+            buyUrl: buyUrl
         })
     };
 
@@ -63,10 +65,12 @@ class TopicTab extends Component {
     };
 
     loadMoreData = () => {
-        const {findMoreTopicVideoForPage, match} = this.props;
+        const {findMoreTopicVideoForPage, topicVideoState, match} = this.props;
+        let {data: apiData} = topicVideoState;
+
         findMoreTopicVideoForPage({
             "topicId": match.params.id,
-            number: this.state.number + 1,
+            number: apiData.data.number + 1,
             size: this.state.size,
         })
     }
@@ -82,8 +86,8 @@ class TopicTab extends Component {
         let {data: apiData, isLoadingMore} = topicVideoState;
 
         let isHasNext = false;
-        if (_.has(apiData, ['data','last'])) {
-            isHasNext = apiData.data.last;
+        if (_.has(apiData, ['data', 'last'])) {
+            isHasNext = !apiData.data.last;
         }
 
         return (
@@ -92,7 +96,7 @@ class TopicTab extends Component {
                           loading={isLoadingMore}
                           onLoadMore={this.loadMoreData}/>
         )
-    }
+    };
 
     render() {
         const {topicVideoState, match} = this.props;
@@ -105,7 +109,8 @@ class TopicTab extends Component {
 
         return (
             <div>
-                <Banner buy={this.buy}/>
+                <Banner buy={this.buy} topicId={match.params.id}/>
+
                 <div>
                     <div>
                         <Menus current={match.params.type}
@@ -136,7 +141,6 @@ class TopicTab extends Component {
                             </Col>
                         </Row>
                     </div>
-
                 </div>
 
                 <FormModal

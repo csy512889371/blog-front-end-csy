@@ -53,10 +53,11 @@ class Topics extends Component {
      * 分页加载
      */
     loadMoreData = () => {
-        const {findMoreTopicForPage} = this.props;
+        const {findMoreTopicForPage,topicState} = this.props;
+        let {data: apiData} = topicState;
         findMoreTopicForPage({
             "categoryIds": this.state.categoryIds,
-            number: this.state.number + 1,
+            number: apiData.data.number + 1,
             size: this.state.size,
         })
     }
@@ -109,7 +110,7 @@ class Topics extends Component {
 
         let isHasNext = false;
         if (_.has(apiData, ['data','last'])) {
-            isHasNext = apiData.data.last;
+            isHasNext = !apiData.data.last;
         }
 
         return (

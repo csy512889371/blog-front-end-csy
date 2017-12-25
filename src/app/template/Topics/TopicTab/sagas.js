@@ -2,7 +2,7 @@
  * Created by chenshiying on 17/9/28.
  */
 import {call, put, takeLatest} from 'redux-saga/effects';
-import * as api from '../../../apis/index';
+import * as api from '../../../apis';
 
 import {
     findTopicVideoForPageFetch,

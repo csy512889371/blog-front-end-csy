@@ -49,7 +49,6 @@ export default (state = {}, action) => {
                 topicDatas = _.cloneDeep(state.data.data.content)
             }
             action.data.data.content = _.unionWith(topicDatas, action.data.data.content, (a, b) => a.id === b.id);
-
             return {
                 type: FIND_TOPIC_VIDEO_FOR_PAGE_SUCCESS, data: action.data, params: action.params, isLoadingMore: false
             }

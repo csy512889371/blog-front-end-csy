@@ -3,7 +3,7 @@
  */
 import {
     FIND_TOPIC_VIDEO_FOR_PAGE, FIND_TOPIC_VIDEO_FOR_PAGE_FETCH, FIND_TOPIC_VIDEO_FOR_PAGE_SUCCESS, FIND_TOPIC_VIDEO_FOR_PAGE_ERROR,
-    FIND_MORE_TOPIC_VIDEO_FOR_PAGE,FIND_MORE_TOPIC_VIDEO_FOR_PAGE_SUCCESS,FIND_MORE_TOPIC_VIDEO_FOR_PAGE_FETCH
+    FIND_MORE_TOPIC_VIDEO_FOR_PAGE,FIND_MORE_TOPIC_VIDEO_FOR_PAGE_SUCCESS,FIND_MORE_TOPIC_VIDEO_FOR_PAGE_FETCH,FIND_TOPIC_INFO
 } from './actionTypes';
 
 export const findTopicVideoForPage = (params) => {
@@ -47,3 +47,11 @@ export const findMoreTopicVideoForPageSuccess = (data, params) => ({
 export const findMoreTopicVideoForPageFetch = () => ({
     type: FIND_MORE_TOPIC_VIDEO_FOR_PAGE_FETCH
 });
+
+
+export const findTopicById = (params) => {
+    return {
+        type: FIND_TOPIC_INFO,
+        params: params
+    }
+};

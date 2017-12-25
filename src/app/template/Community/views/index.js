@@ -11,8 +11,8 @@ import _ from 'lodash'
 import {findCommunitySubTopicForPage, findMoreCommunitySubTopicForPage} from '../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
 import {getCategory} from '../../constants'
+
 
 class Community extends Component {
 
@@ -27,21 +27,27 @@ class Community extends Component {
     componentDidMount() {
         const {findCommunitySubTopicForPage, match} = this.props;
         const subType = match.params.type;
-        findCommunitySubTopicForPage({
-            topicId: "",
-            number: this.state.number,
-            size: this.state.size,
-        })
+        if (subType === "video") {
+            findCommunitySubTopicForPage({
+                number: this.state.number,
+                size: this.state.size,
+            })
+        }
     }
 
     getSubTopic = () => {
         const {communitySubTopicState, match} = this.props;
 
-        let {data: apiData, params, isLoadingMore} = communitySubTopicState;
+        const subType = match.params.type;
+        if ("video" !== subType) {
+            return null;
+        }
+
+        let {data: apiData, isLoadingMore} = communitySubTopicState;
 
         let isHasNext = false;
         if (_.has(apiData, ['data', 'last'])) {
-            isHasNext = apiData.data.last;
+            isHasNext = !apiData.data.last;
         }
 
         return (

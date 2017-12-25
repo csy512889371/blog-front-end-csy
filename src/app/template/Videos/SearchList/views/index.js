@@ -55,11 +55,11 @@ class SearchList extends React.Component {
 
     loadMoreData = () => {
         const {findMoreVideoSearchForPage, videoSearchState} = this.props;
-        let {params} = videoSearchState;
+        let {data: apiData, params} = videoSearchState;
 
         findMoreVideoSearchForPage({
             name: params.name,
-            number: this.state.number + 1,
+            number: apiData.data.number + 1,
             size: this.state.size,
         })
     }
