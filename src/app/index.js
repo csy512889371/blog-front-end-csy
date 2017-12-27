@@ -12,10 +12,16 @@ let store = configureStore();
 
 export default () => {
     return (
-        <AppContainer>
-            <Provider store={store}>
-                <CRouter store={store}/>
-            </Provider>
-        </AppContainer>
+        <Provider store={store}>
+            <CRouter store={store}/>
+        </Provider>
     )
 }
+
+
+{/*
+<AppContainer>
+    <Provider store={store}>
+        <CRouter store={store}/>
+    </Provider>
+</AppContainer>*/}

@@ -69,6 +69,21 @@ export default class Page2 extends React.Component {
 
                     <Row gutter={16} type="flex" justify="center">
                         <Col span={8}>
+                            <Card title="购买说明" bordered={false} className={styles.buyInfo}>
+                                <div >
+                                    <h3>* 同一主题下的商品打包销售,平均10元左右。</h3>
+                                    <h3>* 如：主题React下的所有非【单销】的商品打包消息</h3>
+                                    <h3>*【单销】商品表示单独出售</h3>
+                                    <h3>* 点击【购买】扫描支付</h3>
+                                    <h3>* 目前只支持《支付宝》</h3>
+                                    <h3>* 如有问题加入QQ群咨询</h3>
+                                </div>
+                            </Card>
+                        </Col>
+                    </Row>
+
+                    <Row gutter={16} type="flex" justify="center">
+                        <Col span={8}>
                             <Card title="申明" bordered={false} className={styles.notifyDiv}>
                                 <div >
                                     <h3>本站资源全部来自与互联网，如果发现本站有侵权行为，请告知，我们会在第一时间处理</h3>

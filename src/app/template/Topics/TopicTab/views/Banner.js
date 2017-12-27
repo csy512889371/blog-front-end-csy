@@ -24,8 +24,8 @@ class Banner extends Component {
                     message.error('获取主题信息失败');
                 }
             })
-            .catch((err) => {
-                throw err;
+            .catch(() => {
+                message.error('获取主题信息失败');
             });
     }
 
@@ -46,7 +46,7 @@ class Banner extends Component {
                     </Row>
                     <Row gutter={16} type="flex" justify="center">
                         <Col className="gutter-row" md={4}>
-                            <Button onClick={this.buyTopic} style={{backgroundColor: "#feffe6"}}>¥ 10.00 购买</Button>
+                            <Button onClick={this.buyTopic} style={{backgroundColor: "#feffe6"}}>¥ {topicData.price}.00 购买</Button>
                         </Col>
                     </Row>
                 </div>

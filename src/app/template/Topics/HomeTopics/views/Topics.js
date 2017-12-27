@@ -11,6 +11,7 @@ import {bindActionCreators} from 'redux';
 import {noData, loadingSpin} from "../../../../components/CommonUI"
 import chunk from "lodash/chunk";
 import _ from 'lodash'
+import Category from './Category';
 
 const FormItem = Form.Item;
 
@@ -97,7 +98,7 @@ class Topics extends Component {
                 </Row>
             )
         });
-    }
+    };
 
 
     render() {
@@ -118,30 +119,13 @@ class Topics extends Component {
                 <Row gutter={16} type="flex" justify="center">
                     <Col className="gutter-row" md={15}>
                         <Card bordered={false}>
-                            <Form layout="inline">
-                                <StandardFormRow title="所属类目" block style={{paddingBottom: 11}}>
-                                    <FormItem>
-                                        <TagSelect onChange={this.handleFormSubmit} expandable>
-                                            <TagSelect.Option value="1">云\大数据</TagSelect.Option>
-                                            <TagSelect.Option value="2">系统\测试</TagSelect.Option>
-                                            <TagSelect.Option value="3">前端</TagSelect.Option>
-                                            <TagSelect.Option value="4">后端</TagSelect.Option>
-                                            <TagSelect.Option value="5">版本管理</TagSelect.Option>
-                                            <TagSelect.Option value="6">移动应用</TagSelect.Option>
-                                            <TagSelect.Option value="7">数据库</TagSelect.Option>
-                                            <TagSelect.Option value="8">产品</TagSelect.Option>
-                                            <TagSelect.Option value="9">人工智能</TagSelect.Option>
-                                        </TagSelect>
-                                    </FormItem>
-                                </StandardFormRow>
-                            </Form>
+                            <Category handleFormSubmit={this.handleFormSubmit}/>
                         </Card>
                     </Col>
                 </Row>
 
                 {isLoadingList ? loadingSpin() :
                     _.has(topicState, ['data', 'data', 'content']) ? this.getTopicList(topicState.data.data.content) : noData()}
-
                 {
                     isHasNext &&
                     <Row gutter={16} type="flex" justify="center">

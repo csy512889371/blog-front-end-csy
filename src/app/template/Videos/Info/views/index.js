@@ -63,7 +63,10 @@ class VideoInfo extends Component {
         const {videoInfoState} = this.props;
         let {data: apiData} = videoInfoState;
         const videoInfo = apiData.data;
-
+        let buyStr = "购买";
+        if (videoInfo.isSolo === 1) {
+            buyStr = "¥" + videoInfo.price + ".00 购买";
+        }
         return (
             <div>
                 <Row gutter={16} type="flex" justify="center">
@@ -79,9 +82,9 @@ class VideoInfo extends Component {
                     </Col>
                 </Row>
                 <Row gutter={16} type="flex" justify="center">
-                    <Col className="gutter-row" md={1}>
+                    <Col className="gutter-row" md={2}>
                         <div className={styles.buyBtton}>
-                            <Button type="primary" onClick={this.buy}>¥ {videoInfo.price}.00 购买</Button>
+                            <Button type="primary" onClick={this.buy}>{buyStr}</Button>
                         </div>
                     </Col>
                 </Row>

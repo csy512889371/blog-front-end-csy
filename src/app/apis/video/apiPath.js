@@ -8,7 +8,8 @@ const apiPath = {
     findForPageByTopic: topicServer + apiRelativePath.findForPageByTopic,
     findForPageByName: topicServer + apiRelativePath.findForPageByName,
     findById: topicServer + apiRelativePath.findById,
-    findAllForPage: topicServer + apiRelativePath.findAllForPage
+    findAllForPage: topicServer + apiRelativePath.findAllForPage,
+    viewVideo: topicServer + apiRelativePath.viewVideo,
 };
 
 export default apiPath;

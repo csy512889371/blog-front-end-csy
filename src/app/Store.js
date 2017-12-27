@@ -14,10 +14,11 @@ export const sagaMiddleware = createSagaMiddleware();
 const middlewares = [rMiddleware, sagaMiddleware];
 if (process.env.NODE_ENV !== 'production') {
     middlewares.push(require('redux-immutable-state-invariant').default());
+    middlewares.push(logger);
 }
 
 const storeEnhancers = compose(
-    applyMiddleware(...middlewares, logger)
+    applyMiddleware(...middlewares)
 );
 
 export default function configureStore() {

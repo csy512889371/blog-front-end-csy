@@ -67,11 +67,11 @@ class SearchList extends React.Component {
 
     getSubTopic = () => {
         const {videoSearchState} = this.props;
-        let {data: apiData, params, isLoadingMore} = videoSearchState;
+        let {data: apiData, isLoadingMore} = videoSearchState;
 
         let isHasNext = false;
         if (_.has(apiData, ['data','last'])) {
-            isHasNext = apiData.data.last;
+            isHasNext = !apiData.data.last;
         }
 
         return (

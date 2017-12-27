@@ -219,6 +219,9 @@ class Register extends Component {
                         >
                             注册
                         </Button>
+                        <Link className={styles.login} to="/">
+                            系统开发中暂不支持注册。
+                        </Link>
                         <Link className={styles.login} to="/user/login">
                             使用已有账户登录
                         </Link>

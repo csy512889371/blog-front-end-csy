@@ -1,7 +1,7 @@
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
 import styles from './index.module.less'
-import {Avatar, Badge, Button, Card, Divider, Icon, List, Spin} from 'antd';
-import {Link} from 'dva/router';
+import {Avatar, Badge, Button, Card, Divider, Icon, List, Spin, message} from 'antd';
+import * as api from '../../../apis';
 
 class VideoSubList extends Component {
 
@@ -12,7 +12,20 @@ class VideoSubList extends Component {
     state = {
         loading: true,
         data: [],
-    }
+    };
+
+    viewVideo = (videoId) => {
+        const promise = api.video.viewVideo({videoId: videoId});
+        promise.then((res) => res.json())
+            .then((res) => {
+                if (res.success) {
+                    console.log("view add 1");
+                }
+            })
+            .catch(() => {
+                message.error('更新文章阅读数失败');
+            });
+    };
 
     renderActivities = (item) => {
         const IconText = ({type, text, style}) => (
@@ -26,9 +39,12 @@ class VideoSubList extends Component {
         return (
             <List.Item key={item.id}>
                 <List.Item.Meta
-                    avatar={<Avatar src={item.imageUrl !== null ? item.imageUrl : "http://img.my.csdn.net/uploads/201712/17/1513517930_7778.png"}/>}
+                    avatar={<Avatar
+                        src={item.imageUrl !== null ? item.imageUrl : "http://img.my.csdn.net/uploads/201712/17/1513517930_7778.png"}/>}
                     title={
-                        <span>
+                        <span onClick={({}) => {
+                            this.viewVideo(item.id)
+                        }}>
                             <a target="_blank"
                                href={"/videos/doc/" + item.id}><h3>{item.name}</h3>
                             </a>

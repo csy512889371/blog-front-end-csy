@@ -133,7 +133,7 @@ class TopicTab extends Component {
                             <Col className={styles.gutterRow} md={6}>
                                 <Card title="购买说明">
                                     <Timeline>
-                                        <Timeline.Item><Badge count={"单售"}/>商品要单独购买。</Timeline.Item>
+                                        <Timeline.Item>类型为<Badge count={"单售"}/>商品要单独购买。</Timeline.Item>
                                         <Timeline.Item>同一主题下的内容打包购买</Timeline.Item>
                                         <Timeline.Item>点击购买-扫码支付</Timeline.Item>
                                     </Timeline>

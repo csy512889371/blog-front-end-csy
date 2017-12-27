@@ -8,9 +8,10 @@ const findForPageByTopic = (data) => request.post(apiPath.findForPageByTopic, da
 const findForPageByName = (data) => request.post(apiPath.findForPageByName, data);
 const findById = (data) => request.post(apiPath.findById, data);
 const findAllForPage = (data) => request.post(apiPath.findAllForPage, data);
+const viewVideo = (data) => request.post(apiPath.viewVideo, data);
 
 
-export {findForPageByTopic, findForPageByName, findById, findAllForPage};
+export {findForPageByTopic, findForPageByName, findById, findAllForPage, viewVideo};
 
 
 

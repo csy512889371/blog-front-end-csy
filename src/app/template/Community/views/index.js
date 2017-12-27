@@ -35,6 +35,16 @@ class Community extends Component {
         }
     }
 
+    loadMoreData = () => {
+        const {findMoreCommunitySubTopicForPage, communitySubTopicState} = this.props;
+        let {data: apiData} = communitySubTopicState;
+
+        findMoreCommunitySubTopicForPage({
+            number: apiData.data.number + 1,
+            size: this.state.size,
+        })
+    }
+
     getSubTopic = () => {
         const {communitySubTopicState, match} = this.props;
 

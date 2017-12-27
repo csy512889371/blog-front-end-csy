@@ -3,7 +3,8 @@
  */
 const apiRelativePath = {
     findForPage: '/blog/topic/findForPage.do',
-    findById: '/blog/topic/findById.do'
+    findById: '/blog/topic/findById.do',
+    findAllCategory:"/blog/category/findAll.do"
 };
 
 export default apiRelativePath;

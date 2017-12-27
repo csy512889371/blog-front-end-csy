@@ -1,7 +1,7 @@
-const topicServer = "http://localhost:9080";
+const topicServer = "http://localhost:8080";
 
 const UcServer = {
-    "uumsServer": "http://localhost:9080/api",
+    "uumsServer": "http://localhost:8080/api",
     "secure": "false"
 }
 
