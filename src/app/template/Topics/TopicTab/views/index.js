@@ -136,6 +136,7 @@ class TopicTab extends Component {
                                         <Timeline.Item>类型为<Badge count={"单售"}/>商品要单独购买。</Timeline.Item>
                                         <Timeline.Item>同一主题下的内容打包购买</Timeline.Item>
                                         <Timeline.Item>点击购买-扫码支付</Timeline.Item>
+                                        <Timeline.Item><span style={{color: '#eb2f96'}}>qq群（架构师成长之路）688324454</span></Timeline.Item>
                                     </Timeline>
                                 </Card>
                             </Col>

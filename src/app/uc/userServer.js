@@ -5,6 +5,8 @@ import {UcServer} from '../apis/utils/apiServer';
 const httpServer = UcServer.uumsServer;
 
 const baseQuestByPost = (basepath, data, callback) => {
+
+    console.log(httpServer + basepath);
     request.post(httpServer + basepath)
         .set('Content-Type', 'application/json')
         .send(data)
@@ -16,7 +18,6 @@ const baseQuestByPost = (basepath, data, callback) => {
 
 const login = (data, history, nextPathname, remember, callback) => {
     baseQuestByPost('/user/login.do', data, (err, res) => {
-
         let loginMessage;
 
         if (err && err.status === '404') {

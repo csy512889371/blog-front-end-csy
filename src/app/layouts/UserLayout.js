@@ -16,12 +16,12 @@ const links = [{
     href: '',
 }];
 
-const copyright = <div>Copyright <Icon type="copyright"/> 2017 eva出品</div>;
+const copyright = <div>Copyright <Icon type="copyright"/> 2017 CTOEDU出品</div>;
 
 class UserLayout extends React.PureComponent {
 
     getPageTitle() {
-        let title = 'eva 架构师的学习社区';
+        let title = 'CTOEDU 架构师的学习社区';
         return title;
     }
 

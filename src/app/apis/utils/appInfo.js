@@ -1,4 +1,4 @@
-const appSn = 'blog';
-const appName = "架构师的成长之路";
+const appSn = 'evablog';
+const appName = "evablog";
 
 export {appSn, appName};

@@ -14,14 +14,14 @@ const isLogin = () => {
 const logout = (history, pathname) => {
     UnitConfig.logout(appSn, () => {
         history ?
-            history.push('/login?returnPath=' + pathname, {nextPathname: pathname}) :
-            window.location.href = '/login?returnPath=' + pathname;
+            history.push('/user/login?returnPath=' + pathname, {nextPathname: pathname}) :
+            window.location.href = '/user/login?returnPath=' + pathname;
     });
 };
 
 const goToLogin = (history, pathname) => {
     UnitConfig.logout(appSn, () => {
-        history.push('/login?returnPath=' + pathname, {nextPathname: pathname});
+        history.push('/user/login?returnPath=' + pathname, {nextPathname: pathname});
     });
 };
 

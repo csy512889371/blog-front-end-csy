@@ -106,7 +106,7 @@ class Footer extends React.Component {
                             &nbsp;
                         </div>
                         <div>
-                            Built with&nbsp; eva
+                            Built with&nbsp; CTOEDU
                         </div>
                     </li>
                 </ul>

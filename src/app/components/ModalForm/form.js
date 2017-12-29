@@ -70,13 +70,19 @@ class ModForm extends React.Component {
     getBuyTextField = field => (
         <div>
             <a target="_blank" rel="扫码支付" href={field.options.url}>
-                <Button type="primary" >扫描支付</Button>
+                <Button type="primary" size="large">扫描支付</Button>
             </a>
             <div>
                 {field.options && field.options.initialValue}
             </div>
             <div style={{color: '#eb2f96'}}>
                 微信支付目前有问题，请使用支付宝支付。
+            </div>
+            <div style={{color: '#eb2f96'}}>
+                支付成功后，获取下载地址：
+            </div>
+            <div>
+                <img  src="http://blogsela.oss-cn-beijing.aliyuncs.com/ZF4.png?x-oss-process=style/buy"/>
             </div>
         </div>
     )

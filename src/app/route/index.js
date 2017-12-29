@@ -12,7 +12,7 @@ import UserLayout from '../layouts/UserLayout';
 import Home from '../template/Home';
 import Intro from '../template/Intro';
 import NotFound from './Exception/500';
-import Login from '../template/Login';
+import {view as Login} from '../template/Login';
 
 
 import Register from '../template/Register';
