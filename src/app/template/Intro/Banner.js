@@ -1,7 +1,7 @@
 import React from 'react';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import QueueAnim from 'rc-queue-anim';
-import {Icon} from 'antd';
+import {Icon, Button} from 'antd';
 import {Link} from 'dva/router';
 
 function typeFunc(a) {
@@ -26,11 +26,7 @@ export default function Banner() {
                     <h2 key="h2">Java <p>架构</p></h2>
                     <p key="content">架构师成长之路 （QQ群）688324454</p>
                     <span className="line" key="line"/>
-                    <div key="button1" className="start-button clearfix">
-                        <Link to="\blog\register">
-                            注册
-                        </Link>
-                    </div>
+
                 </QueueAnim>
                 <Icon type="down" className="down"/>
             </ScrollElement>

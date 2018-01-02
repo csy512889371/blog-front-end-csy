@@ -14,8 +14,7 @@ import Intro from '../template/Intro';
 import NotFound from './Exception/500';
 import {view as Login} from '../template/Login';
 
-
-import Register from '../template/Register';
+import {view as Register} from '../template/Register';
 import {view as Community} from '../template/Community';
 import Reset from '../template/Reset';
 const history = createBrowserHistory();
@@ -68,7 +67,6 @@ const TopicTabPage = (props) => {
         </Layout12>
     );
 };
-
 
 const LoginPage = (props) => {
     return (

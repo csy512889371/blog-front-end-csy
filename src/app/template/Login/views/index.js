@@ -69,7 +69,7 @@ class Login extends Component {
                                 <FormItem>
                                     {getFieldDecorator('userName', {
                                         rules: [{
-                                            required: type === 'account', message: '请输入账户名！',
+                                            required: type === 'account', message: '请输入邮箱号！',
                                         }],
                                     })(
                                         <Input

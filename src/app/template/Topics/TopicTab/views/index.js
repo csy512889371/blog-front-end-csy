@@ -7,6 +7,7 @@ import {getStyle} from '../../../../utils/index';
 import VideoSubList from '../../../TopicSubInfo/VideoSubList/index';
 import {FormModal} from '../../../../components/ModalForm/index';
 import {noData, loadingSpin} from "../../../../components/CommonUI"
+
 import {selectVisibleTopicVideoPage} from '../selector';
 import _ from 'lodash'
 import {findTopicVideoForPage, findMoreTopicVideoForPage} from '../actions';
