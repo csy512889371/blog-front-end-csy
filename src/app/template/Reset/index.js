@@ -79,7 +79,7 @@ class Reset extends Component {
                             type="primary"
                             htmlType="submit"
                         >
-                            提交
+                            功能开发中,如需找回请qq联系管理员。
                         </Button>
                         <Link className={styles.login} to="/user/login">
                             使用已有账户登录

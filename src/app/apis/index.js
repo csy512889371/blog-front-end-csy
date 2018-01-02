@@ -3,5 +3,6 @@
  */
 import * as topic from './topic';
 import * as video from './video';
+import * as register from './register';
 
-export {topic, video};
+export {topic, video, register};

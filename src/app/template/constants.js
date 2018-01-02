@@ -5,6 +5,7 @@ export const BlogsReducerNames = {
     videoSearchList:"blogVideoSearchList",
     videoInfo:'blogVideoInfo',
     communitySubTopic: 'blogCommunitySubTopic',
+    registerUser:'blogRegisterUser'
 };
 
 export const getCategory = () => {
