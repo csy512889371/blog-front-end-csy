@@ -58,7 +58,7 @@
     "react-color": "^2.13.8",
     "react-cookies": "^0.1.0",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-dev-utils": "^3.0.2",
+    "react-dev-utils": "^11.0.4",
     "react-document-title": "^2.0.3",
     "react-dom": "^15.6.1",
     "react-draft-wysiwyg": "^1.10.0",
